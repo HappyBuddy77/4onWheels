@@ -8,6 +8,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 // @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootApplication
+@ComponentScan(basePackages = {"com._onWheels._onWheels"})
 public class Application {
 
 	public static void main(String[] args) {

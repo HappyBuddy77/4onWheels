@@ -1,0 +1,91 @@
+@charset "UTF-8";
+body {
+	font-family: Arial, sans-serif;
+	padding-bottom: 60px;
+}
+/* input[type="text"] {
+	width: 280px;
+} */
+input[type="submit"],
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+    font-size: 16px;
+	line-height: 1.2;
+	box-sizing: border-box;
+    margin: 5px 0 10px 0;
+
+}
+input[type="submit"]:hover,
+button:not(.sort-btn):hover {
+	background-color: #45a049;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    border-bottom: 1px solid #ccc;
+}
+/* Make Title 4onWheels White */
+header a {
+    text-decoration: none;
+    color: white;
+}
+/* For the Shopping Cart and Profile icons */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.header-icons .icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+}
+
+footer {
+	background-color: #007BFF;
+    color: white;
+	padding: 10px;
+	text-align: center;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+fieldset {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 15px;
+	margin-bottom: 20px;
+}
+legend {
+	font-weight: bold;
+}
+.calculator-results {
+	margin: 20px auto;
+	padding: 20px;
+	width:320px;
+}
+
+/* Add CSS for error */
+.error {
+	display: none;
+	width: 100%;
+	padding: 10px;
+}
+.error.active {
+	display: block;
+	margin: auto auto 20px auto;	/* top | right | bottom | left */
+	font-size: 80%;
+	color: white;
+	background-color: #900;
+	border-radius: 0 0 5px 5px;
+	box-sizing: border-box;
+}
