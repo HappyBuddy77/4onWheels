@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* EV Details */
+form {
+	padding: 20px;
+	width:650px;
+    margin: 0;
+}
+/* Adding Space for the details */
+form label {
+    display: block;       
+    margin-bottom: 15px;  
+}
+/* Make Details and Image Side by Side */
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    width: 1400px;
+    margin: 0 auto;
+}
+/* Style the EV picture */
+.EV-image {
+    padding: 20px;
+    max-width: 650px;
+    height: auto;
+}
+/* For the Table */
+table {
+	max-width: 1400px;
+	border: 1px solid #ccc;
+	background-color: #ffffff;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+/* Padding and Borders - For Table*/
+th, td {
+	padding: 12px 15px;
+	border-bottom: 1px solid #ddd;
+	text-align: left;
+}
+/* Header and Background - For Table*/
+th {
+	background-color: #007BFF;
+	color: white;
+}
+/* Make every other row gray */
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+/* When item is selected */
+tr.selected {
+    background-color: #d0ebff;
+}
+/* When item is hovering
+tr:not(:first-child):hover {
+    background-color: #d0ebff;
+	cursor: pointer;
+} */
+    /* Style for sort buttons */
+.sort-btn {
+	background: none;
+	background-color: #f1f1f1;
+	border: none;
+	color: #007BFF;
+	cursor: pointer;
+	margin-left: 8px;
+	font-size: 14px;
+	font-weight: bold;
+	vertical-align: middle;
+	user-select: none;
+	padding: 6px;
+	width: 32px;            
+	height: 32px;           
+}
+
+.sort-btn:hover {
+	color: #45a049;
+	border-color: #f2f2f2;
+}
