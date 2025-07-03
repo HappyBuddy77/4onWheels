@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Dashboard</title>
+  <link rel="stylesheet" th:href="@{/css/admin/styles.css}" />
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Filters</h2>
+    <!-- Date range -->
+    <section>
+      <h3 style="margin-top:0;">Date Range</h3>
+      <label>
+        From
+        <input type="date" id="startDate" />
+      </label>
+      <label>
+        To
+        <input type="date" id="endDate" />
+      </label>
+    </section>
+
+    <!-- Multi‑select dropdown with checkboxes -->
+    <section>
+      <h3 style="margin-bottom:0;">Manufacturers</h3>
+      <details>
+        <summary>Select Manufacturers</summary>
+        <ul class="dropdown-list">
+          <li><label><input type="checkbox" name="categories" value="Audi" /> Audi</label></li>
+          <li><label><input type="checkbox" name="categories" value="BMW" /> BMW</label></li>
+          <li><label><input type="checkbox" name="categories" value="Cadillac" /> Cadillac</label></li>
+          <li><label><input type="checkbox" name="categories" value="Ford" /> Ford</label></li>
+        </ul>
+      </details>
+    </section>
+
+    <button class="apply-btn" id="applyBtn">Apply changes</button>
+    <button class="reset-btn" id="resetBtn">Reset</button>
+  </aside>
+
+  <main class="main">
+    <h1>Sales Dashboard</h1>
+    <div id="logContainer" class="log-list"></div>
+  </main>
+
+  <!-- External JavaScript (Thymeleaf URL expression) -->
+  <script th:src="@{/js/dashboard_sales.js}" defer></script>
+</body>
+</html>

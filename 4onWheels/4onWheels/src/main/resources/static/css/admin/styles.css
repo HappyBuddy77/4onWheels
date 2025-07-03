@@ -1,0 +1,76 @@
+:root {
+      --sidebar-width: 240px;
+      --sidebar-bg: #2c3e50;
+      --sidebar-color: #ecf0f1;
+      --brand-green: #1abc9c;
+      --brand-green-dark: #16a085;
+      --brand-red: #e74c3c;
+      --brand-red-dark: #c0392b;
+    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+}
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  color: var(--sidebar-color);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+.sidebar h2 { margin-top: 0; font-size: 1.25rem; }
+.sidebar label { display: block; margin: 0.5rem 0; font-size: 0.9rem; }
+.sidebar input[type="date"] { width: 100%; padding: 0.25rem; margin-top: 0.25rem; box-sizing: border-box; }
+
+/* Dropdown */
+details { margin: 1rem 0; }
+summary { cursor: pointer; padding: 0.5rem; background: #34495e; border-radius: 4px; }
+summary::-webkit-details-marker { display: none; }
+.dropdown-list { list-style: none; padding: 0.5rem 0 0; margin: 0; }
+.dropdown-list li { margin: 0.25rem 0; }
+
+/* Buttons */
+.apply-btn, .reset-btn {
+  padding: 0.6rem;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.apply-btn { background: var(--brand-green); }
+.apply-btn:hover { background: var(--brand-green-dark); }
+.reset-btn { background: var(--brand-red); margin-top: 0.5rem; }
+.reset-btn:hover { background: var(--brand-red-dark); }
+
+/* Main content */
+.main { margin-left: var(--sidebar-width); padding: 2rem 1rem; flex: 1; min-height: 100vh; background: #f6f8fa; box-sizing: border-box; }
+
+/* Log list */
+.log-list { margin-top: 1rem; }
+.log-entry { display: flex; flex-wrap: wrap; gap: 1rem; padding: 0.75rem 1rem; border-bottom: 1px solid #dfe2e5; background: #fff; }
+.log-entry:nth-child(odd) { background: #f3f4f6; }
+.log-entry span { flex: 1 1 120px; min-width: 120px; font-size: 0.9rem; }
+.log-entry .log-title { font-weight: 600; flex: 2 1 200px; }
+.log-entry .log-content { flex: 3 1 300px; white-space: pre-wrap; }
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  body { flex-direction: column; }
+  .sidebar { position: relative; width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 1rem; }
+  .apply-btn, .reset-btn { width: auto; flex: 1; }
+  .main { margin-left: 0; padding: 1rem; }
+}
