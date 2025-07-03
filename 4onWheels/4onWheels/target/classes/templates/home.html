@@ -3,8 +3,12 @@
 	
 	<head>
 		<title>4onWheels Home</title>
-		<link rel="stylesheet" type="text/css" href="homePageStyle.css">
-		<link rel="stylesheet" type="text/css" href="Style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="css/homePageStyle.css"> -->
+		<link rel="stylesheet" th:href="@{/css/style.css}" />
+		<link rel="stylesheet" th:href="@{/css/homePageStyle.css}" />
+
+
+		<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 		<script src="homeInputs.js"></script>
 		
 	</head>
@@ -157,3 +161,21 @@
 		</footer>
 		</body>
 </html>
+<!-- <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  </head>
+  <body>
+    <div>
+      <h1>Home</h1>
+      <form th:action="@{/logout}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <button type="submit">Logout</button>
+      </form>
+    </div>
+  </body>
+</html> -->
