@@ -11,6 +11,15 @@ cp env-example .env
 
 ### With Make
 
+Update your `application.properties` to use db from `compose.yml`
+
+```
+# !!! When using Docker
+spring.datasource.url=jdbc:mysql://db:3306/4onwheels
+spring.datasource.username=root
+spring.datasource.password=rootpassword123
+```
+
 ```
 make
 # or
