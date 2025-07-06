@@ -21,13 +21,9 @@ public class SecurityConfig {
         @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 http
-
-                                .csrf(csrf -> csrf
-                                                .ignoringRequestMatchers("/api/**"))
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/css/**", "/register", "/api/register", "/login")
+                                                .requestMatchers("/css/**", "/register", "/login")
                                                 .permitAll()
-                                                // Allow access to login/register
                                                 .anyRequest().authenticated())
                                 .httpBasic(Customizer.withDefaults())
                                 .formLogin(form -> form
@@ -42,7 +38,6 @@ public class SecurityConfig {
         @Bean
         public PasswordEncoder passwordEncoder() {
                 return new BCryptPasswordEncoder();
-                // return PasswordEncoderFactories.createDelegatingPasswordEncoder();
         }
 
         @Bean

@@ -1,26 +1,8 @@
 Sprint 1 Login
 
 > Author @vinceflores
-
-- Merged remote branches to a local `features/auth`
-
-```
-remotes/origin/feature/login-registration-pages -----\
-                                                      -> feature/auth
-remotes/origin/feature/user-registration-backend ----/
-```
-
-> I had trouble with Conflicts, but switching to VSCode IDE helped.
-
-- Configured Sping JPA (User, UserRepository) and connected to a local mysql database
-- Integrated basic auth using Spring Security by creating `CustomUserDetails.java` and `CustomUserDetailsService.java`
-  and adding some @Beans to SecurityConfig.java
-- Added controllers to manially test login functionality using Browser and Postman
-- Moved databse credentials used by `src/main/resources/applications.properties` to a .env that needs to be created.
-- Created a `RegistrationController.java` class because of issues with POSt requests not being called which turned out to be related to csrf protection by Spring Security.
-- Added a json file containing simple postman collection for testing login, and register. !Import to postman for use.
-
-> I modified the register only so I can test password that uses Bycrypt encoding
+- Dockerize the app
+- Fix registration
 
 Resources
 
