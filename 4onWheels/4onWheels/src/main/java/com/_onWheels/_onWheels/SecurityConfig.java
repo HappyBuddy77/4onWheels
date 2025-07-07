@@ -22,7 +22,7 @@ public class SecurityConfig {
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 http
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/css/**", "/register", "/login")
+                                                .requestMatchers("/css/**", "/js/**", "/register", "/login", "/HomePage", "/newVehicle", "/usedVehicle")
                                                 .permitAll()
                                                 .anyRequest().authenticated())
                                 .httpBasic(Customizer.withDefaults())
