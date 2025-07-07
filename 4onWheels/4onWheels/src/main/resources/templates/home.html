@@ -1,18 +1,159 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}" />
-  </head>
-  <body>
-    <div>
-      <h1>Home</h1>
-      <form th:action="@{/logout}" method="post">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-        <button type="submit">Logout</button>
-      </form>
-    </div>
-  </body>
+    <html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<title>4onWheels Home</title>
+		<link rel="stylesheet" type="text/css" href="homePageStyle.css">
+		<link rel="stylesheet" type="text/css" href="Style.css">
+		<script src="homeInputs.js"></script>
+		
+	</head>
+	<body>
+		<header>
+            <a href="/HomePage">
+			    <h1>4onWheels Home</h1>
+            </a>
+
+            <div class="header-icons">
+                <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
+                <!-- Commented Out for now but this is to link the icon to the Shoping Cart, put above line between <a>...</a> -->
+                <!-- <a href="/cart" title="Shopping Cart"> 
+                </a> -->
+                <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
+                <!-- Add more icons as needed -->
+            </div>
+		</header>
+
+		<main>
+			<form id="filter_form">
+				<fieldset>
+				
+					<legend>Filter</legend>								<!-- Title of the Box -->
+					
+					<div class="horizontal-labels">
+
+						<label for="ID">
+							ID: <input type="text" id="id" name="id">	
+							<span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+						</label>
+
+						<label for="Make">
+							Make: <input type="text" id="make" name="Make">	
+							<span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+						</label>
+
+						<label for="Model">
+							Model: <input type="text" id="model" name="model">	
+							<span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+						</label>
+						
+						<label for="year">
+							Year: <input type="text" id="year" name="year">	
+							<span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+						</label>
+
+						<label for="Type">
+							Type: <input type="text" id="type" name="Type">	
+							<span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+						</label>
+					
+						<button type="button" id="filter_on">Filter</button>
+						<button type="button" id="filter_off">Reset</button>
+					</div>
+
+				</fieldset>
+			</form>
+
+			<div class="container">
+				<!-- Hot Deals Form -->
+				<form class="hotdeals-form">
+					<fieldset>
+						<legend>Hot Deals</legend>
+						<input type="submit" value="Hot Deals!!" class="HotDeals-button">
+					</fieldset>
+				</form>
+
+				<!-- Compare Form -->
+				<form class="compare-form">
+					<fieldset>
+						<legend>Compare Vehicles</legend>
+						<div class="horizontal-labels">
+							<label for="compareID1">
+								Vehicle ID 1:
+								<input type="text" id="compareID1" name="compareID1">
+							</label>
+							<label for="compareID2">
+								Vehicle ID 2:
+								<input type="text" id="compareID2" name="compareID2">
+							</label>
+							<input type="submit" value="Compare EV">
+						</div>
+					</fieldset>
+				</form>
+			</div>
+
+			<table id="vehicleList" style="width:100%">
+				<tr>
+					<th>ID
+						<button class="sort-btn" onclick="sortTable(0, 'btn_make')" dir="no" id="btn_make">↑</button>
+					</th>
+					<th>MAKE
+						<button class="sort-btn" onclick="sortTable(1, 'btn_make')" dir="no" id="btn_make">↑</button>
+					</th>
+					<th>MODEL
+						<button class="sort-btn" onclick="sortTable(2, 'btn_model')" dir="no" id="btn_model">↑</button>
+					</th>
+					<th>YEAR
+						<button class="sort-btn" onclick="sortTable(3, 'btn_year')" dir="no" id="btn_year">↑</button>
+					</th>
+					<th>TYPE
+						<button class="sort-btn" onclick="sortTable(4, 'btn_type')" dir="no" id="btn_type">↑</button>
+					</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>Tesla</td>
+					<td>Model S</td>
+					<td>2022</td>
+					<td>Used</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Honda</td>
+					<td>Civic</td>
+					<td>2020</td>
+					<td>New</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Honda</td>
+					<td>Civic</td>
+					<td>2021</td>
+					<td>Used</td>
+				</tr>
+			</table>
+
+		<!-- <table style="width:100%">
+				<tr>
+					<th>name</th>
+					<th>make</th>
+					<th>model</th>
+					<th>colour</th>
+					<th>year</th>
+					<th>type</th>
+				</tr>
+				<tr th:each="vehicle : ${vehicle}">
+					<td th:text="${vehicle.name}">Name</td>
+					<td th:text="${vehicle.make}">Make</td>
+					<td th:text="${vehicle.model}">Model</td>
+					<td th:text="${vehicle.colour}">Colour</td>
+					<td th:text="${vehicle.year}">Year</td>
+					<td th:text="${vehicle.type}">Type</td>
+				</tr>
+			</table> -->
+		</main>
+		<footer>
+			<p>Something</p>
+		</footer>
+		</body>
 </html>

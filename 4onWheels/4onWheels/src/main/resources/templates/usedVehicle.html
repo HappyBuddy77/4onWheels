@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<title>New Vehicle</title>
+		<link rel="stylesheet" type="text/css" href="newVehicleStyle.css">
+		<link rel="stylesheet" type="text/css" href="Style.css">
+		<!-- <script src="homeInputs.js"></script> -->
+		
+	</head>
+	<body>
+		<header>
+            <a href="/HomePage">
+			    <h1>4onWheels Home</h1>
+            </a>
+
+            <div class="header-icons">
+                <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
+                <!-- Commented Out for now but this is to link the icon to the Shoping Cart, put above line between <a>...</a> -->
+                <!-- <a href="/cart" title="Shopping Cart"> 
+                </a> -->
+                <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
+                <!-- Add more icons as needed -->
+            </div>
+		</header>
+		<main>
+            <div class="container">
+
+                <!-- Just A place holder right now will replace with Image from DB -->
+                <img src="https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&height=900&width=1600&fit=bounds" class="EV-image"> 
+
+                <form action="/HomePage" method="post" id="HomePage">
+                    <fieldset>
+                    
+                        <legend>Vehicle Details</legend>								<!-- Title of the Box -->
+
+                            <label for="ID">
+                                ID: <span th:text="${param.id}"></span>
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="Make">
+                                Make: Get this from Database using ID
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="Model">
+                                Model: Get this from Database Using ID
+                                <!-- Change to read avalible Models from database later -->                             
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="Colour">
+                                Colour: Get this from Database Using ID
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="Price">
+                                Price: Get this from Database Using ID
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+                            
+                            <label for="year">
+                                Year: Get this from Database Using ID
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="Type">
+                                Type: New	
+                            </label>
+
+                            <label for="EV History">
+                                EV History: Get this from Database Using ID
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+                        
+                        <input type="submit" value="Add To Cart">
+
+                    </fieldset>
+                </form>
+            
+                <table id="reviewList" style="width:100%">
+                    <tr>
+                        <th>ID</th>
+                        <th>USER</th>
+                        <th>RATING
+                            <button class="sort-btn" onclick="sortTable(2, 'btn_rating')" dir="no" id="btn_rating">↑</button>
+                        </th>
+                        <th>REVIEW</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>User 1</td>
+                        <td>3 Stars</td>
+                        <td>It was alright</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>User 2</td>
+                        <td>5 Stars</td>
+                        <td>Absolutely fantastic!</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>User 3</td>
+                        <td>1 Star</td>
+                        <td>Terrible experience.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>User 4</td>
+                        <td>4 Stars</td>
+                        <td>Very good, will use again.</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>User 5</td>
+                        <td>2 Stars</td>
+                        <td>Not great, some issues.</td>
+                    </tr>
+                </table>
+            </div>
+		<!-- <table style="width:100%">
+				<tr>
+					<th>name</th>
+					<th>make</th>
+					<th>model</th>
+					<th>colour</th>
+					<th>year</th>
+					<th>type</th>
+				</tr>
+				<tr th:each="vehicle : ${vehicle}">
+					<td th:text="${vehicle.name}">Name</td>
+					<td th:text="${vehicle.make}">Make</td>
+					<td th:text="${vehicle.model}">Model</td>
+					<td th:text="${vehicle.colour}">Colour</td>
+					<td th:text="${vehicle.year}">Year</td>
+					<td th:text="${vehicle.type}">Type</td>
+				</tr>
+			</table> -->
+		</main>
+		<footer>
+			<p>Something</p>
+		</footer>
+		</body>
+</html>
