@@ -22,9 +22,9 @@ public class VehicleController {
 	
 	@GetMapping("/vehicles/{id}")
 	public String viewVehicleDetail(@PathVariable Long id,Model model) {
-		Optional<Vehicle> vehicles = vehicleRepository.findById(id);
-		model.addAttribute("vehicles",vehicles);
-		return "vehicles-details";
+		Optional<Vehicle> vehicle = vehicleRepository.findById(id);
+		model.addAttribute("vehicles",vehicle.get());
+		return "vehicle-detail";
 	}
 	
 	

@@ -29,7 +29,8 @@ public class Vehicle {
     private String type; 
     
     private String battery_capacity; 
-    private String range;           
+    @Column(name = "`range`")
+    private String range;    
     private String charging_time;     
     private String top_speed;         
     private String acceleration; 

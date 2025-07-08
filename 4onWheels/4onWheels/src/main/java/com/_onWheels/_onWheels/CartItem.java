@@ -26,7 +26,7 @@ public class CartItem {
 	private String productName;
 	
 	@Column(name = "product_id")
-	private String product_Id;
+	private String productId;
 	
 	@Column(name = "product_img")
 	private String product_img;
@@ -35,10 +35,10 @@ public class CartItem {
 	
 	private double price;
 
-	public CartItem(Cart cart, String productName, String product_Id, int quantity, double price) {
+	public CartItem(Cart cart, String productName, String productId, int quantity, double price) {
 		this.cart = cart;
 		this.productName = productName;
-		this.product_Id = product_Id;
+		this.productId = productId;
 		this.quantity = quantity;
 		this.price = price;
 	}
