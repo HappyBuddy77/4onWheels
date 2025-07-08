@@ -20,4 +20,8 @@ public class webpageController {
     public String printUsedVehicle() {
         return "usedVehicle";
     }
+    @GetMapping("/cart")  
+    public String printCart() {
+        return "cart";
+    }
 }
