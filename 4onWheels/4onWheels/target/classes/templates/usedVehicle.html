@@ -15,10 +15,10 @@
             </a>
 
             <div class="header-icons">
-                <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
-                <!-- Commented Out for now but this is to link the icon to the Shoping Cart, put above line between <a>...</a> -->
-                <!-- <a href="/cart" title="Shopping Cart"> 
-                </a> -->
+
+                <a href="/cart" title="Shopping Cart"> 
+                    <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
+                </a>
                 <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
                 <!-- Add more icons as needed -->
             </div>
@@ -74,8 +74,11 @@
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
                         
-                        <input type="submit" value="Add To Cart">
-
+                        <div class="horizontal-labels">
+                            <button type="button" id="addToCart">Add To Cart</button>
+                            <button type="button" id="loanCalc">Calculate Loan</button>
+                        </div>
+                        
                     </fieldset>
                 </form>
             

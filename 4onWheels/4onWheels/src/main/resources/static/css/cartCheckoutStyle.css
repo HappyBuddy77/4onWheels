@@ -4,6 +4,7 @@ form {
 	padding: 20px;
 	width:800px;
     margin: 0;
+    box-sizing: border-box;
 }
 /* Adding Space for the details */
 form label {
@@ -77,4 +78,25 @@ form label {
 .cart-details th {
     background-color: #eee;
     font-weight: bold;        
+}
+/* Hide trash icon by default */
+.trash-icon {
+    display: none;
+    cursor: pointer;
+}
+/* Show trash icon when hovering over item */
+.cart-item:hover .trash-icon {
+    display: inline-block;
+    color: red;
+    font-size: 20px;
+    transition: 0.3s;
+}
+/* Override for Email and address Street and Credit Card*/
+.horizontal-labels input[type="text"].longer {
+    flex-grow: 1;
+    max-width: 600px;
+}
+/* Override for Postal Code, Exp and CVC*/
+.horizontal-labels input[type="text"].middle {
+    max-width: 300px;
 }
