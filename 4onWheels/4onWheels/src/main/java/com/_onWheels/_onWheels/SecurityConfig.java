@@ -2,7 +2,6 @@ package com._onWheels._onWheels;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -13,11 +12,19 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/js/**","/css/**", "/register", "/login", "/","/admin/**").permitAll() // Allow access to login/register
+                .requestMatchers(
+                    "/js/**",
+                    "/css/**",
+                    "/register",
+                    "/login",
+                    "/",
+                    "/admin/**"
+                ).permitAll()
                 .anyRequest().authenticated()
             )
+            .csrf(csrf -> csrf.disable()) // ✅ Disable CSRF for API testing like curl
             .formLogin(form -> form
-                .loginPage("/login")  // Use your custom login page
+                .loginPage("/login")
                 .permitAll()
             )
             .logout(logout -> logout
