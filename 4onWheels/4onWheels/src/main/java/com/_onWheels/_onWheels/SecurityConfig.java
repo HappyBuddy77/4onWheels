@@ -18,7 +18,8 @@ public class SecurityConfig {
                     "/register",
                     "/login",
                     "/",
-                    "/admin/**"
+                    "/admin/**",
+                    "/api/getLogs" // ✅ Allow public access to log fetch endpoint
                 ).permitAll()
                 .anyRequest().authenticated()
             )
