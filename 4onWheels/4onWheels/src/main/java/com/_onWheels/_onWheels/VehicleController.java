@@ -23,11 +23,18 @@ public class VehicleController {
 		return "home";
 	}
 	
-	@GetMapping("/vehicles/{id}")
-	public String viewVehicleDetail(@PathVariable Long id,Model model) {
+	@GetMapping("/usedVehicle/{id}")
+	public String viewUsedVehicleDetail(@PathVariable Long id,Model model) {
 		Optional<Vehicle> vehicle = vehicleRepository.findById(id);
 		model.addAttribute("vehicles",vehicle.get());
-		return "vehicle-detail";
+		return "usedVehicle";
+	}
+
+	@GetMapping("/newVehicle/{id}")
+	public String viewNewVehicleDetail(@PathVariable Long id,Model model) {
+		Optional<Vehicle> vehicle = vehicleRepository.findById(id);
+		model.addAttribute("vehicles",vehicle.get());
+		return "newVehicle";
 	}
 	
 	

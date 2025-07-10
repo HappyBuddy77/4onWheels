@@ -3,8 +3,8 @@
 	
 	<head>
 		<title>New Vehicle</title>
-		<link rel="stylesheet" type="text/css" href="css/newVehicleStyle.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+		<link rel="stylesheet" th:href="@{/css/newVehicleStyle.css}" />
 		<!-- <script src="homeInputs.js"></script> -->
 		
 	</head>
@@ -28,7 +28,7 @@
             <div class="container">
 
                 <!-- Just A place holder right now will replace with Image from DB -->
-                <img src="https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&height=900&width=1600&fit=bounds" class="EV-image"> 
+                <img th:src="${vehicles.image_url}" class="EV-image"> 
 
                 <form action="/cart" method="get" id="EV_details_new">
                     <fieldset>
@@ -36,17 +36,17 @@
                         <legend>Vehicle Details</legend>								<!-- Title of the Box -->
 
                             <label for="ID">
-                                ID: <span th:text="${param.id}"></span>
+                                ID: <span th:text="${vehicles.id}"></span>
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 
                             <label for="Make">
-                                Make: Get this from Database using ID
+                                Make: <span th:text="${vehicles.make}"></span>
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 
                             <label for="Model">
-                                Model: Get this from Database Using ID
+                                Model: <span th:text="${vehicles.model}"></span>
                                 <!-- Change to read avalible Models from database later -->                             
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
@@ -65,12 +65,12 @@
                             </label>
 
                             <label for="Price">
-                                Price: Get this from Database Using ID
+                                Price: <span th:text="${vehicles.price}"></span>
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
                             
                             <label for="year">
-                                Year: Get this from Database Using ID
+                                Year: <span th:text="${vehicles.year}"></span>
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 

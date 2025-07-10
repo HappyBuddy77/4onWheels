@@ -28,38 +28,48 @@
                 one from current row and one from the next:*/
                 x = rows[i].getElementsByTagName("TD")[n];
                 y = rows[i + 1].getElementsByTagName("TD")[n];
-                /*check if the two rows should switch place,
-                based on the direction, asc or desc:*/
+
+                var isNumeric = !isNaN(x.innerHTML) && !isNaN(y.innerHTML);
+
                 if (dir == "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        //if so, mark as a switch and break the loop:
-                        shouldSwitch= true;
-                        break;
+                    if (isNumeric) {
+                        // Compare as numbers if the values are numeric
+                        if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
+                            shouldSwitch = true;
+                            break;
+                        }
                     }
-                } else if (dir == "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        //if so, mark as a switch and break the loop:
-                        shouldSwitch = true;
-                        break;
+                    else {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch= true;
+                            break;
+                        }
+                    }
+                } 
+                else if (dir == "desc") {
+                    if (isNumeric) {
+                        if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                    else{
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
                     }
                 }
             }
             if (shouldSwitch) {
-                /*If a switch has been marked, make the switch
-                and mark that a switch has been done:*/
                 rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
                 switching = true;
-                //Each time a switch is done, increase this count by 1:
                 switchcount ++;
-                // document.getElementById("btn").textContent = "↑";      
             } 
             else {
-                /*If no switching has been done AND the direction is "asc",
-                set the direction to "desc" and run the while loop again.*/
                 if (switchcount == 0 && dir == "asc") {
                     dir = "desc";
                     switching = true;
-                    // document.getElementById("btn").textContent  = "↓";
                 }
             }
         }
@@ -100,18 +110,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const cells = this.getElementsByTagName("td");
             const data = {
                 id: cells[0].innerText,
-                // make: cells[1].innerText,
-                // model: cells[2].innerText,
-                // year: cells[3].innerText,
-                // type: cells[4].innerText
+
             };
 
-            const queryString = new URLSearchParams(data).toString();
+            // const queryString = new URLSearchParams(data).toString();
+            // if(cells[4].innerText == "Used") {
+            //     window.location.href = `/usedVehicle?${queryString}`;
+            // }
+            // else {
+            //     window.location.href = `/newVehicle?${queryString}`;
+            // }
+
             if(cells[4].innerText == "Used") {
-                window.location.href = `/usedVehicle?${queryString}`;
-            }
-            else {
-                window.location.href = `/newVehicle?${queryString}`;
+                window.location.href = `/usedVehicle/${data.id}`;
+            } else {
+                window.location.href = `/newVehicle/${data.id}`;
             }
 
             // Redirect to vehicle.html with query string
