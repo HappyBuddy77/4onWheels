@@ -11,7 +11,7 @@ public class CheckoutController {
     @Autowired
     private CartRepository cartRepository;
 
-    @GetMapping("/checkout")
+   /* @GetMapping("/checkout")
     public String checkout(Model model) {
         // Get user's cart and add to model(database)
         return "checkout"; // renders checkout.html(not yet created)
@@ -22,5 +22,5 @@ public class CheckoutController {
         // Process checkout(not yet  created)
         System.out.println("Checkout processed for: " + checkoutRequest.getFirstName());
         return "checkout-success";
-    }
+    }*/
 }

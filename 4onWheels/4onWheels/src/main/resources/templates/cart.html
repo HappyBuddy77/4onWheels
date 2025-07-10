@@ -1,10 +1,155 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+    <html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<title>New Vehicle</title>
+		<link rel="stylesheet" type="text/css" href="css/cartCheckoutStyle.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<!-- <script src="homeInputs.js"></script> -->
+		
+        <script type="text/javascript" th:src="@{/js/cartInputs.js}"></script>
 
-</body>
+	</head>
+	<body>
+		<header>
+            <a href="/HomePage">
+			    <h1>4onWheels Home</h1>
+            </a>
+
+            <div class="header-icons">
+                
+                <!-- Commented Out for now but this is to link the icon to the Shoping Cart, put above line between <a>...</a> -->
+                <a href="/cart" title="Shopping Cart"> 
+                    <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
+                </a>
+
+                <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
+                <!-- Add more icons as needed -->
+            </div>
+		</header>
+		<main>
+
+            <div class="checkout_title">
+            <label for="checkout">
+                Checkout
+                <span class="error" aria-live="polite"></span>								
+            </label>
+            </div>
+
+            <div class="container">
+                <!-- Just A place holder right now will replace with Image from DB -->
+                <form action="/HomePage" method="post" id="HomePage">
+                    <fieldset>
+                        <legend>Payment Details</legend>								<!-- Title of the Box -->
+                        <div class="horizontal-labels">
+                            <label for="firstName">
+                                First Name: <input class="middle" type="text" id="firstName" name="firstName">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="lastName">
+                                Last Name: <input class="middle" type="text" id="lastName" name="lastName">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="email">
+                                Email: <input class="longer" type="text" id="email" name="email">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+                            
+                            <label for="phone">
+                                Phone Number: <input class="middle" type="text" id="phone" name="phone">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="addressStreet">
+                                Address: <input class="longer" type="text" id="addressStreet" name="addressStreet">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="addressCity">
+                                City: <input class="middle" type="text" id="addressCity" name="addressCity">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="addressPostal">
+                                Postal Code: <input class="shorter" type="text" id="addressPostal" name="addressPostal">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="creditCard">
+                                Credit / Debt: <input class="longer" type="text" id="creditCard" name="creditCard">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="creditExp">
+                                Exp: <input class="shorter" type="text" id="creditExp" name="creditExp">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="creditCVC">
+                                CVC: <input class="shorter" type="text" id="creditCVC" name="creditCVC">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <div class="cart-details">
+                    <h2>Cart Details</h2>
+                    <table id="cartDetails-table">
+                        <thead>
+                            <tr class="cart-item">
+                                <th>ID</th>
+                                <th>Model</th>
+                                <th>Make</th>
+                                <th>Price</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="cart-item">
+                                <td>1</td>
+                                <td>Tesla</td>
+                                <td>Model S</td>
+                                <td>$70000</td>
+                                <td class="delete-item">
+                                    <i class="trash-icon" onclick="deleteItem(event)">🗑️</i>
+                                </td>
+                            </tr>
+                            <tr class="cart-item">
+                                <td>2</td>
+                                <td>Honda</td>
+                                <td>Civic</td>
+                                <td>$40000</td>
+                                <td class="delete-item">
+                                    <i class="trash-icon" onclick="deleteItem(event)">🗑️</i>
+                                </td>
+                            </tr>
+                            <tr class="cart-item">
+                                <td>3</td>
+                                <td>Honda</td>
+                                <td>Civic</td>
+                                <td>$30000</td>
+                                <td class="delete-item">
+                                    <i class="trash-icon" onclick="deleteItem(event)">🗑️</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4"><strong>Total</strong></td>
+                                <td><strong id="total-price">$0.00</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <button class="next-button" id="btn_checkout">Next ➔</button>
+
+		</main>
+		<footer>
+			<p>Something</p>
+		</footer>
+		</body>
 </html>

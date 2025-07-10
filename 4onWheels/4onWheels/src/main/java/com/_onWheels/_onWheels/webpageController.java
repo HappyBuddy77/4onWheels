@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller  
 public class webpageController {
 
-    @GetMapping("/HomePage")  
-    public String printHome() {
-        return "home";
+    // @GetMapping("/newVehicle")  
+    // public String printNewVehicle() {
+    //     return "newVehicle";
+    // }
+
+    // @GetMapping("/usedVehicle")  
+    // public String printUsedVehicle() {
+    //     return "usedVehicle";
+    // }
+    @GetMapping("/cart")  
+    public String printCart() {
+        return "cart";
     }
 
-    @GetMapping("/newVehicle")  
-    public String printNewVehicle() {
-        return "newVehicle";
-    }
-
-    @GetMapping("/usedVehicle")  
-    public String printUsedVehicle() {
-        return "usedVehicle";
-    }
 }

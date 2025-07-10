@@ -6,7 +6,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
-// import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,9 +20,13 @@ public class SecurityConfig {
         @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 http
+
+                                .csrf(csrf -> csrf
+                                                .ignoringRequestMatchers("/api/**"))
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/css/**", "/js/**", "/register", "/login", "/HomePage", "/newVehicle", "/usedVehicle")
+                                                .requestMatchers("/css/**", "/js/**", "/register", "/api/register", "/login", "/HomePage", "/newVehicle/**", "/usedVehicle/**", "/cart")
                                                 .permitAll()
+                                                // Allow access to login/register
                                                 .anyRequest().authenticated())
                                 .httpBasic(Customizer.withDefaults())
                                 .formLogin(form -> form
@@ -38,6 +41,7 @@ public class SecurityConfig {
         @Bean
         public PasswordEncoder passwordEncoder() {
                 return new BCryptPasswordEncoder();
+                // return PasswordEncoderFactories.createDelegatingPasswordEncoder();
         }
 
         @Bean
