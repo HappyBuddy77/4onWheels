@@ -2,6 +2,9 @@ package com._onWheels._onWheels;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com._onWheels._onWheels.review.Review;
 
 //PlaceHolder
 @Entity
@@ -16,6 +19,9 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private LocalDateTime createdAt;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<Review> reviews;
 
 	public User() {
 	}

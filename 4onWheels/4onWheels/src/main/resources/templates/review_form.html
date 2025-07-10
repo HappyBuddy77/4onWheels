@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Review</title>
+</head>
+<body>
+    <div>
+        <h1>Review Form</h1>
+        <form th:action="@{/review/ + ${vehicle.id}}" th:object="${ReviewDTO}" method="post">
+          <label for="review">Review</label>
+          <textarea type="text" id="review" name="review" placeholder="Enter your review" required />
+    
+          <label for="rating">Rating</label>
+          <input type="number" id="rating" name="password" placeholder="Enter you raitng 0-5" required />
+    
+          <button type="submit">Register</button>
+        </form>
+      </div>
+</body>
+</html>
