@@ -3,9 +3,28 @@ body {
 	font-family: Arial, sans-serif;
 	padding-bottom: 60px;
 }
-/* input[type="text"] {
-	width: 280px;
-} */
+/* Make the labels side by side */
+.horizontal-labels {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap; 
+}
+.horizontal-labels label {
+	margin-right: 5px;
+	white-space: nowrap;
+}
+.horizontal-labels input[type="text"] {
+	width: auto;         
+	max-width: 180px;
+	padding: 10px;
+	margin: 5px 0 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	line-height: 1.2;
+	box-sizing: border-box;
+}
 input[type="submit"],
 button {
 	background-color: #4CAF50;

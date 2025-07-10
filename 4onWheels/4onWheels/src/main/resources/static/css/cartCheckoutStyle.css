@@ -1,0 +1,102 @@
+@charset "UTF-8";
+/* EV Details */
+form {
+	padding: 20px;
+	width:800px;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* Adding Space for the details */
+form label {
+    display: block;       
+    margin-bottom: 15px;  
+}
+/* Make Details and Image Side by Side */
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    width: 1700px;
+    margin: 0 auto;
+}
+/* Style the EV picture */
+.EV-image {
+    padding: 20px;
+    max-width: 650px;
+    height: auto;
+}
+.checkout_title {
+    display: block;
+    margin: 30px auto 15px auto; 
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    background-color: #e0e0e0;
+    padding: 10px 15px;         
+    font-size: 24px;
+    max-width: 300px;           
+    border-radius: 5px;
+}
+.next-button {
+    font-size: 18px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+.cart-details {
+    margin-top: 30px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;             
+    max-width: 800px;        
+    margin-left: 20px;       
+    box-sizing: border-box;  
+}
+.cart-details h2 {
+    text-align: center;
+    margin-bottom: 20px;      
+    font-size: 26px;          
+}
+.cart-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.cart-details th,
+.cart-details td {
+    padding: 12px;            
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-size: 18px;          
+}
+.cart-details th {
+    background-color: #eee;
+    font-weight: bold;        
+}
+/* Hide trash icon by default */
+.trash-icon {
+    display: none;
+    cursor: pointer;
+}
+/* Show trash icon when hovering over item */
+.cart-item:hover .trash-icon {
+    display: inline-block;
+    color: red;
+    font-size: 20px;
+    transition: 0.3s;
+}
+/* Override for Email and address Street and Credit Card*/
+.horizontal-labels input[type="text"].longer {
+    flex-grow: 1;
+    max-width: 600px;
+}
+/* Override for Postal Code, Exp and CVC*/
+.horizontal-labels input[type="text"].middle {
+    max-width: 300px;
+}
