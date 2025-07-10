@@ -19,7 +19,8 @@ public class SecurityConfig {
                     "/login",
                     "/",
                     "/admin/**",
-                    "/api/getLogs" // ✅ Allow public access to log fetch endpoint
+                    "/api/getLogs", // ✅ Allow public access to log fetch endpoint
+                    "/chat/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
