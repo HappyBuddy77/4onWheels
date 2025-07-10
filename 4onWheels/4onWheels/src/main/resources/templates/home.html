@@ -116,47 +116,16 @@
 						<button class="sort-btn" onclick="sortTable(4, 'btn_type')" dir="no" id="btn_type">↑</button>
 					</th>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>Tesla</td>
-					<td>Model S</td>
-					<td>2022</td>
-					<td>Used</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>Honda</td>
-					<td>Civic</td>
-					<td>2020</td>
-					<td>New</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Honda</td>
-					<td>Civic</td>
-					<td>2021</td>
-					<td>Used</td>
+				<tr th:each="vehicle : ${vehicles}">
+					<td th:text="${vehicle.id}"></td>
+					<td th:text="${vehicle.make}"></td>
+					<td th:text="${vehicle.model}"></td>
+					<td th:text="${vehicle.year}"></td>
+					<td th:text="${vehicle.type}"></td>
 				</tr>
 			</table>
 
-		<!-- <table style="width:100%">
-				<tr>
-					<th>name</th>
-					<th>make</th>
-					<th>model</th>
-					<th>colour</th>
-					<th>year</th>
-					<th>type</th>
-				</tr>
-				<tr th:each="vehicle : ${vehicle}">
-					<td th:text="${vehicle.name}">Name</td>
-					<td th:text="${vehicle.make}">Make</td>
-					<td th:text="${vehicle.model}">Model</td>
-					<td th:text="${vehicle.colour}">Colour</td>
-					<td th:text="${vehicle.year}">Year</td>
-					<td th:text="${vehicle.type}">Type</td>
-				</tr>
-			</table> -->
+		
 		</main>
 		<footer>
 			<p>Something</p>
