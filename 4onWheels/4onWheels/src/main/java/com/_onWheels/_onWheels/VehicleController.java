@@ -25,16 +25,38 @@ public class VehicleController {
 	
 	@GetMapping("/usedVehicle/{id}")
 	public String viewUsedVehicleDetail(@PathVariable Long id,Model model) {
-		Optional<Vehicle> vehicle = vehicleRepository.findById(id);
-		model.addAttribute("vehicles",vehicle.get());
+		Optional<Vehicle> vehicleOpt = vehicleRepository.findById(id);
+		
+		Vehicle vehicle;
+		if(vehicleOpt.isPresent()) {
+			vehicle = vehicleOpt.get();
+		
+		
+		vehicle.incrementViews();
+		vehicleRepository.save(vehicle);
+		
+		model.addAttribute("vehicles",vehicle);
+		
 		return "usedVehicle";
+		}
+		return "redirect:/HomePage";
 	}
 
 	@GetMapping("/newVehicle/{id}")
 	public String viewNewVehicleDetail(@PathVariable Long id,Model model) {
-		Optional<Vehicle> vehicle = vehicleRepository.findById(id);
-		model.addAttribute("vehicles",vehicle.get());
-		return "newVehicle";
+		Optional<Vehicle> vehicleOpt = vehicleRepository.findById(id);
+		Vehicle vehicle;
+		
+		if(vehicleOpt.isPresent()) {
+			vehicle = vehicleOpt.get();
+			
+			vehicle.incrementViews();
+			vehicleRepository.save(vehicle);
+			model.addAttribute("vehicles",vehicle);
+			return "newVehicle";
+			
+		}
+		return "redirect:/HomePage";
 	}
 	
 	@GetMapping("/compare/{id1}/{id2}")
@@ -62,6 +84,10 @@ public class VehicleController {
 		
 		case "year":
 			vehicles = vehicleRepository.findAllByOrderByYearDesc();
+			break;
+		
+		case "top_five":
+			vehicles = vehicleRepository.findTop5ByOrderByUserViewsDesc();
 			break;
 		
 		default:

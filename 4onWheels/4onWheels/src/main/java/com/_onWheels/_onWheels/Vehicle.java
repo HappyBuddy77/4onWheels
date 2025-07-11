@@ -43,6 +43,8 @@ public class Vehicle {
     private String acceleration;
     
     private String image_url;
+    @Column(name = "user_views", columnDefinition =  "INTEGER DEFAULT 0")
+    private int userViews = 0;
     
     // Custom constructor for basic vehicle
     public Vehicle(String make, String model, int year, double price, String description) {
@@ -62,10 +64,16 @@ public class Vehicle {
     public String getFormattedPrice() {
         return String.format("$%.2f", price);
     }
+    
     public boolean isUsed() {
         return "used".equalsIgnoreCase(type);
-        }
+    }
+    
     public boolean isNew() {
         return "new".equalsIgnoreCase(type);
+    }
+    
+    public void incrementViews() {
+        this.userViews++;
     }
 }
