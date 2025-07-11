@@ -1,8 +1,11 @@
-package com._onWheels._onWheels;
+package com._onWheels._onWheels.Usage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import com._onWheels._onWheels.Usage.Logging.Health.ApiLog;
+import com._onWheels._onWheels.Usage.Logging.Health.ApiLogService;
 
 import java.time.Instant;
 import java.util.List;
@@ -23,12 +26,12 @@ public class AdminController {
     // Serve HTML pages
     @GetMapping("/admin/sales")
     public String sales() {
-        return "sales";
+        return "admin_dashboard/sales";
     }
 
     @GetMapping("/admin/health")
     public String health() {
-        return "health";
+        return "admin_dashboard/health";
     }
 
     // API endpoint for fetching logs

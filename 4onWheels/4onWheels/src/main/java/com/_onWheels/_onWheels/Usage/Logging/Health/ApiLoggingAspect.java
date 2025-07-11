@@ -1,7 +1,5 @@
-package com._onWheels._onWheels;
+package com._onWheels._onWheels.Usage.Logging.Health;
 
-import com._onWheels._onWheels.ApiLog;
-import com._onWheels._onWheels.ApiLogService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -10,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
+import com._onWheels._onWheels.Usage.Logging.Health.ApiLog;
+import com._onWheels._onWheels.Usage.Logging.Health.ApiLogService;
 
 import java.time.Instant;
 import java.util.HashMap;
