@@ -24,7 +24,8 @@ public class SecurityConfig {
                                 .csrf(csrf -> csrf
                                                 .ignoringRequestMatchers("/api/**"))
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/css/**", "/js/**", "/register", "/api/register", "/login", "/HomePage", "/newVehicle/**", "/usedVehicle/**", "/cart/**", "compare/**")
+                                                .requestMatchers("/css/**", "/js/**", "/register", "/api/register", "/login", "/HomePage", "/newVehicle/**", "/usedVehicle/**", "/cart/**", "compare/**","/admin/**",
+                                                        "/api/getLogs")
                                                 .permitAll()
                                                 // Allow access to login/register
                                                 .anyRequest().authenticated())
