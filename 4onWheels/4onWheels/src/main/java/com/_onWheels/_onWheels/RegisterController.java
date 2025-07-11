@@ -28,5 +28,4 @@ public class RegisterController {
             return "register";
         }
     }
-
 }

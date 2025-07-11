@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Dashboard</title>
+  <!-- Main dashboard stylesheet -->
+  <link rel="stylesheet" th:href="@{/css/admin/styles.css}" />
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Filters</h2>
+
+    <!-- Date range -->
+    <section>
+      <h3 style="margin-top:0;">Date Range</h3>
+      <label>
+        From
+        <input type="date" id="startDate" />
+      </label>
+      <label>
+        To
+        <input type="date" id="endDate" />
+      </label>
+    </section>
+
+    <!-- Service filter (multi‑select) -->
+    <section>
+      <h3 style="margin-bottom:0;">Services</h3>
+      <details>
+        <summary>Select Services</summary>
+        <ul class="dropdown-list">
+          <li><label><input type="checkbox" name="services" value="Auth" /> Auth</label></li>
+          <li><label><input type="checkbox" name="services" value="Billing" /> Billing</label></li>
+          <li><label><input type="checkbox" name="services" value="Search" /> Search</label></li>
+          <li><label><input type="checkbox" name="services" value="Notifications" /> Notifications</label></li>
+        </ul>
+      </details>
+    </section>
+
+    <button class="apply-btn" id="applyBtn">Apply changes</button>
+    <button class="reset-btn" id="resetBtn">Reset</button>
+  </aside>
+
+  <main class="main">
+    <h1>Health Dashboard</h1>
+    <div id="logContainer" class="log-list"></div>
+  </main>
+
+  <!-- External JavaScript for this page -->
+  <script src="/js/dashboard_health.js" th:src="@{/js/admin_dashboard/dashboard_health.js}" defer></script>
+</body>
+</html>

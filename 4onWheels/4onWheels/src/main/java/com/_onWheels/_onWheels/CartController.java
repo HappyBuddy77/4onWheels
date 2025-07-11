@@ -2,16 +2,13 @@ package com._onWheels._onWheels;
 
 
 import java.security.Principal;
-import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -25,7 +22,7 @@ public class CartController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@GetMapping("/checkout")
+	@GetMapping("/cart")
 	public String viewAllCart(Principal principal,Model model) {
 		
 		String userEmail = principal.getName();
@@ -42,11 +39,11 @@ public class CartController {
 		model.addAttribute("cartItems",cart.getCartItems());
 		model.addAttribute("totalAmount", cart.calculateTotal());
 
-		return "checkout";
+		return "cart";
 	}
 	
-	@PostMapping("/cart/add")
-	public String addToCart(@RequestParam String productId, @RequestParam int quantity, Principal principal) {
+	@PostMapping("/newVehicle/add")
+	public String addToCart_newVehicle(@RequestParam String productId, @RequestParam int quantity, Principal principal) {
 		
 		String userEmail = principal.getName();
 
@@ -58,8 +55,23 @@ public class CartController {
 		}
 		cartService.addItemToCart(user.getId(), productId, quantity);
 
+		return "redirect:/newVehicle/" + productId;
+	}
 
-		return "redirect:/checkout";
+	@PostMapping("/usedVehicle/add")
+	public String addToCart_usedVehicle(@RequestParam String productId, @RequestParam int quantity, Principal principal) {
+		
+		String userEmail = principal.getName();
+
+		User user = userRepository.findByEmail(userEmail);
+		
+		if(user == null) {
+            throw new RuntimeException("User not found: " + userEmail);
+
+		}
+		cartService.addItemToCart(user.getId(), productId, quantity);
+
+		return "redirect:/usedVehicle/" + productId;
 	}
 	
 	@PostMapping("/cart/update")
@@ -79,7 +91,7 @@ public class CartController {
 		cartService.removeItem(cartItem);
 
 
-		return "redirect:/checkout";
+		return "redirect:/cart";
 	}
 	@PostMapping("/cart/clear")
 	public String clearCart(Principal principal) {
@@ -96,6 +108,6 @@ public class CartController {
 		cartService.clearCart(user.getId());
 
 
-		return "redirect:/checkout";
+		return "redirect:/cart";
 	}
 }

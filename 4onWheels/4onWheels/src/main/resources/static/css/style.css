@@ -1,62 +1,109 @@
+/* Combined style.css with both classic form styles and modern layout */
+
+/* Preserve UTF-8 charset from HEAD */
 @charset "UTF-8";
-body {
-	font-family: Arial, sans-serif;
-	padding-bottom: 60px;
+
+/* Import Google Fonts from feature/admin-pages */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Global resets and font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
-/* Make the labels side by side */
+
+/* Basic body styling */
+body {
+    font-family: Arial, sans-serif; /* From HEAD, can choose to keep or replace with Poppins */
+    background-color: var(--background-color4, #cad7fda4); /* from feature/admin-pages */
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 60px; /* from HEAD */
+}
+
+/* CSS variables from feature/admin-pages */
+:root {
+    --background-color1: #fafaff;
+    --background-color2: #ffffff;
+    --background-color3: #ededed;
+    --background-color4: #cad7fda4;
+    --primary-color: #4b49ac;
+    --secondary-color: #0c007d;
+    --Border-color: #3f0097;
+    --one-use-color: #3f0097;
+    --two-use-color: #5500cb;
+}
+
+/* Form input styling from HEAD */
 .horizontal-labels {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	flex-wrap: wrap; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; 
 }
 .horizontal-labels label {
-	margin-right: 5px;
-	white-space: nowrap;
+    margin-right: 5px;
+    white-space: nowrap;
 }
 .horizontal-labels input[type="text"] {
-	width: auto;         
-	max-width: 180px;
-	padding: 10px;
-	margin: 5px 0 10px 0;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-	line-height: 1.2;
-	box-sizing: border-box;
+    width: auto;         
+    max-width: 180px;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 1.2;
+    box-sizing: border-box;
 }
+
+/* Buttons styling from HEAD */
 input[type="submit"],
 button {
-	background-color: #4CAF50;
-	color: white;
-	padding: 10px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     font-size: 16px;
-	line-height: 1.2;
-	box-sizing: border-box;
+    line-height: 1.2;
+    box-sizing: border-box;
     margin: 5px 0 10px 0;
-
 }
 input[type="submit"]:hover,
 button:not(.sort-btn):hover {
-	background-color: #45a049;
+    background-color: #45a049;
 }
+
+/* Header styling combined */
 header {
+    /* from feature/admin-pages */
+    height: 70px;
+    width: 100vw;
+    padding: 0 30px;
+    background-color: var(--background-color1);
+    position: fixed;
+    z-index: 100;
+    box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    border-bottom: 1px solid #ccc;
+
+    /* from HEAD (conflicting background color, choose feature/admin-pages for modern design) */
+    /* background-color: #007BFF; */ 
+    /* border-bottom: 1px solid #ccc; */
 }
-/* Make Title 4onWheels White */
+
+/* Header link styling from HEAD */
 header a {
     text-decoration: none;
-    color: white;
+    color: white; /* from HEAD */
 }
-/* For the Shopping Cart and Profile icons */
+
+/* Header icons from HEAD */
 .header-icons {
     display: flex;
     align-items: center;
@@ -69,42 +116,371 @@ header a {
     filter: brightness(0) invert(1);
 }
 
+/* Footer from HEAD */
 footer {
-	background-color: #007BFF;
+    background-color: #007BFF;
     color: white;
-	padding: 10px;
-	text-align: center;
-	position: fixed;
-	width: 100%;
-	bottom: 0;
-}
-fieldset {
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	padding: 15px;
-	margin-bottom: 20px;
-}
-legend {
-	font-weight: bold;
-}
-.calculator-results {
-	margin: 20px auto;
-	padding: 20px;
-	width:320px;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
-/* Add CSS for error */
+/* Fieldset and legend from HEAD */
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+legend {
+    font-weight: bold;
+}
+
+/* Calculator results box from HEAD */
+.calculator-results {
+    margin: 20px auto;
+    padding: 20px;
+    width: 320px;
+}
+
+/* Error styles from HEAD */
 .error {
-	display: none;
-	width: 100%;
-	padding: 10px;
+    display: none;
+    width: 100%;
+    padding: 10px;
 }
 .error.active {
-	display: block;
-	margin: auto auto 20px auto;	/* top | right | bottom | left */
-	font-size: 80%;
-	color: white;
-	background-color: #900;
-	border-radius: 0 0 5px 5px;
-	box-sizing: border-box;
+    display: block;
+    margin: auto auto 20px auto;
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+}
+
+/* Modern layout styles from feature/admin-pages */
+
+.logo {
+    font-size: 27px;
+    font-weight: 600;
+    color: rgb(47, 141, 70);
+}
+
+.icn {
+    height: 30px;
+}
+
+.menuicn {
+    cursor: pointer;
+}
+
+.searchbar,
+.message,
+.logosec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchbar2 {
+    display: none;
+}
+
+.logosec {
+    gap: 60px;
+}
+
+.searchbar input {
+    width: 250px;
+    height: 42px;
+    border-radius: 50px 0 0 50px;
+    background-color: var(--background-color3);
+    padding: 0 20px;
+    font-size: 15px;
+    outline: none;
+    border: none;
+}
+
+.searchbtn {
+    width: 50px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 50px 50px 0px;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.message {
+    gap: 40px;
+    position: relative;
+    cursor: pointer;
+}
+
+.circle {
+    height: 7px;
+    width: 7px;
+    position: absolute;
+    background-color: #fa7bb4;
+    border-radius: 50%;
+    left: 19px;
+    top: 8px;
+}
+
+.dp {
+    height: 40px;
+    width: 40px;
+    background-color: #626262;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.main-container {
+    display: flex;
+    width: 100vw;
+    position: relative;
+    top: 70px;
+    z-index: 1;
+}
+
+.dpicn {
+    height: 42px;
+}
+
+.main {
+    height: calc(100vh - 70px);
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 40px 30px 30px 30px;
+}
+
+.main::-webkit-scrollbar-thumb {
+    background-image:
+        linear-gradient(to bottom, rgb(0, 0, 85), rgb(0, 0, 50));
+}
+
+.main::-webkit-scrollbar {
+    width: 5px;
+}
+
+.main::-webkit-scrollbar-track {
+    background-color: #9e9e9eb2;
+}
+
+.box-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.nav {
+    min-height: 91vh;
+    width: 250px;
+    background-color: var(--background-color2);
+    position: absolute;
+    top: 0px;
+    left: 00;
+    box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 30px 0 20px 10px;
+}
+
+.navcontainer {
+    height: calc(100vh - 70px);
+    width: 250px;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.navcontainer::-webkit-scrollbar {
+    display: none;
+}
+
+.navclose {
+    width: 80px;
+}
+
+.nav-option {
+    width: 250px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px 0 20px;
+    gap: 20px;
+    transition: all 0.1s ease-in-out;
+}
+
+.nav-option:hover {
+    border-left: 5px solid #a2a2a2;
+    background-color: #dadada;
+    cursor: pointer;
+}
+
+.nav-img {
+    height: 30px;
+}
+
+.nav-upper-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.option1 {
+    border-left: 5px solid #010058af;
+    background-color: var(--Border-color);
+    color: white;
+    cursor: pointer;
+}
+
+.option1:hover {
+    border-left: 5px solid #010058af;
+    background-color: var(--Border-color);
+}
+
+.box {
+    height: 130px;
+    width: 230px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.box:hover {
+    transform: scale(1.08);
+}
+
+.box:nth-child(1) {
+    background-color: var(--one-use-color);
+}
+
+.box:nth-child(2) {
+    background-color: var(--two-use-color);
+}
+
+.box:nth-child(3) {
+    background-color: var(--one-use-color);
+}
+
+.box:nth-child(4) {
+    background-color: var(--two-use-color);
+}
+
+.box img {
+    height: 50px;
+}
+
+.box .text {
+    color: white;
+}
+
+.topic {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.topic-heading {
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+.report-container {
+    min-height: 300px;
+    max-width: 1200px;
+    margin: 70px auto 0px auto;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 3px 3px 10px rgb(188, 188, 188);
+    padding: 0px 20px 20px 20px;
+}
+
+.report-header {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 10px 20px;
+    border-bottom: 2px solid rgba(0, 20, 151, 0.59);
+}
+
+.recent-Articles {
+    font-size: 30px;
+    font-weight: 600;
+    color: #5500cb;
+}
+
+.view {
+    height: 35px;
+    width: 90px;
+    border-radius: 8px;
+    background-color: #5500cb;
+    color: white;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.report-body {
+    max-width: 1160px;
+    overflow-x: auto;
+    padding: 20px;
+}
+
+.report-topic-heading,
+.item1 {
+    width: 1120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.t-op {
+    font-size: 18px;
+    letter-spacing: 0px;
+}
+
+.items {
+    width: 1120px;
+    margin-top: 15px;
+}
+
+.item1 {
+    margin-top: 20px;
+}
+
+.t-op-nextlvl {
+    font-size: 14px;
+    letter-spacing: 0px;
+    font-weight: 600;
+}
+
+.label-tag {
+    width: 100px;
+    text-align: center;
+    background-color: rgb(0, 177, 0);
+    color: white;
+    border-radius: 4px;
 }

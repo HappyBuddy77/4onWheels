@@ -24,13 +24,15 @@ public class SecurityConfig {
                                 .csrf(csrf -> csrf
                                                 .ignoringRequestMatchers("/api/**"))
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/css/**", "/js/**", "/register", "/api/register", "/login", "/HomePage", "/newVehicle/**", "/usedVehicle/**", "/cart")
+                                                .requestMatchers("/css/**", "/js/**", "/register", "/api/register", "/login", "/HomePage", "/newVehicle/**", "/usedVehicle/**", "/cart/**", "compare/**","/admin/**",
+                                                        "/api/getLogs")
                                                 .permitAll()
                                                 // Allow access to login/register
                                                 .anyRequest().authenticated())
                                 .httpBasic(Customizer.withDefaults())
                                 .formLogin(form -> form
                                                 .loginPage("/login") // Use your custom login page
+                                                .defaultSuccessUrl("/HomePage", true)
                                                 .usernameParameter("email")
                                                 .permitAll())
                                 .logout(logout -> logout.permitAll());

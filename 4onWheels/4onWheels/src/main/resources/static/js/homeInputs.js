@@ -179,5 +179,16 @@ document.addEventListener('DOMContentLoaded', function() {
             rows[i].style.display = "";
         }
     });
+
+    document.getElementById("compare_btn").addEventListener("click", function(event) {
+        event.preventDefault(); // Stop default submission
+        const id1 = document.getElementById("compareID1").value;
+        const id2 = document.getElementById("compareID2").value;
+
+        // Validate IDs if needed here
+
+        // Redirect to the dynamic path
+        window.location.href = `/compare/${id1}/${id2}`;
+    });
 	
- });
+});

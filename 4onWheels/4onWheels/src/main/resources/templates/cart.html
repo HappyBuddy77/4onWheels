@@ -3,12 +3,13 @@
 	
 	<head>
 		<title>New Vehicle</title>
-		<link rel="stylesheet" type="text/css" href="css/cartCheckoutStyle.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+		<link rel="stylesheet" th:href="@{/css/cartCheckoutStyle.css}" />
 		<!-- <script src="homeInputs.js"></script> -->
 		
         <script type="text/javascript" th:src="@{/js/cartInputs.js}"></script>
-
+        <meta name="_csrf" th:content="${_csrf.token}"/>
+        <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 	</head>
 	<body>
 		<header>
@@ -72,6 +73,11 @@
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 
+                            <label for="addressProvice">
+                                Province: <input class="middle" type="text" id="addressCity" name="addressCity">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
                             <label for="addressPostal">
                                 Postal Code: <input class="shorter" type="text" id="addressPostal" name="addressPostal">	
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
@@ -101,49 +107,103 @@
                         <thead>
                             <tr class="cart-item">
                                 <th>ID</th>
-                                <th>Model</th>
-                                <th>Make</th>
+                                <th>Item</th>
                                 <th>Price</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="cart-item">
-                                <td>1</td>
-                                <td>Tesla</td>
-                                <td>Model S</td>
-                                <td>$70000</td>
+                            <tr th:each="item : ${cartItems}" class="cart-item">
+                                <td th:text="${item.productId}"></td>
+                                <td th:text="${item.productName}"></td>
+                                <td th:text="${item.price}"></td>
                                 <td class="delete-item">
-                                    <i class="trash-icon" onclick="deleteItem(event)">🗑️</i>
-                                </td>
-                            </tr>
-                            <tr class="cart-item">
-                                <td>2</td>
-                                <td>Honda</td>
-                                <td>Civic</td>
-                                <td>$40000</td>
-                                <td class="delete-item">
-                                    <i class="trash-icon" onclick="deleteItem(event)">🗑️</i>
-                                </td>
-                            </tr>
-                            <tr class="cart-item">
-                                <td>3</td>
-                                <td>Honda</td>
-                                <td>Civic</td>
-                                <td>$30000</td>
-                                <td class="delete-item">
-                                    <i class="trash-icon" onclick="deleteItem(event)">🗑️</i>
+                                    <i class="trash-icon" th:attr="onclick=|deleteItem(event, ${item.id})|" style="cursor:pointer;">🗑️</i>
                                 </td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4"><strong>Total</strong></td>
+                                <td colspan="3"><strong>Total</strong></td>
                                 <td><strong id="total-price">$0.00</strong></td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
+            </div>
+
+            <div class="container">
+                <form action="/HomePage" method="post" id="pickupOption">
+                    <fieldset>
+                        <legend>Payment Options</legend>
+
+                            <label for="pickupLocation">
+                                Pickup Location: 
+                                <select id="pickupLocation" name="pickupLocation">
+                                    <option value="Toronto">Toronto</option>
+                                    <option value="Windsor">Windsor</option>
+                                    <option value="Oshawa">Oshawa</option>
+                                    <option value="Brampton">Brampton</option>
+                                </select>									
+                            </label>
+
+                             <label for="pickupDate">
+                                Pickup Date: <input class="longer" type="text" id="pickupDate" name="pickupDate">	
+                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="pickupTime">
+                                Pickup Time: 
+                                <select id="pickupTime" name="pickupTime">
+                                    <option value="08:00 AM">08:00 AM</option>
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <option value="12:00 PM">12:00 PM</option>
+                                    <option value="01:00 PM">01:00 PM</option>
+                                    <option value="02:00 PM">02:00 PM</option>
+                                    <option value="03:00 PM">03:00 PM</option>
+                                    <option value="04:00 PM">04:00 PM</option>
+                                    <option value="05:00 PM">05:00 PM</option>
+                                </select>									
+                            </label>
+                    </fieldset>
+                </form>
+
+                 <form action="/HomePage" method="post" id="paymentOption">
+                    <fieldset>
+                        <legend>Payment Options</legend>
+                            <label for="paymentOption">
+                                Payment Option: 
+                                <select id="paymentType" name="paymentType">
+                                    <option value="Loan">Loan</option>
+                                    <option value="Full">Full</option>
+                                </select>									
+                            </label>
+
+                            <div id="loanFields" style="display: none; margin-top: 10px;">
+                                <label for="depositAmount">Deposit Amount:
+                                    <input type="number" name="depositAmount" id="depositAmount" min="0">
+                                </label>
+                                <br>
+                                						
+                                <label for="loanLength">Loan Length (months):
+                                    <select id="loanLength" name="loanLength">
+                                        <option value="6">6</option>
+                                        <option value="12">12</option>
+                                        <option value="18">18</option>
+                                        <option value="24">24</option>
+                                        <option value="30">30</option>
+                                        <option value="36">36</option>
+                                    </select>		
+                                </label>
+
+                                <p><strong>Estimated Monthly Payment: <span id="monthlyPayment">$0.00</span></strong></p>
+                            </div>
+                            
+                    </fieldset>
+                </form>
+
             </div>
             <button class="next-button" id="btn_checkout">Next ➔</button>
 
