@@ -16,7 +16,8 @@ public class VehicleController {
 	@Autowired
 	private VehicleRepository vehicleRepository;
 	
-	@GetMapping("/HomePage")
+	// @GetMapping("/HomePage")
+	@GetMapping("/")
 	public String viewAllVehicles(Model model) {
 		List<Vehicle> vehicles = vehicleRepository.findAll();
 		model.addAttribute("vehicles",vehicles);

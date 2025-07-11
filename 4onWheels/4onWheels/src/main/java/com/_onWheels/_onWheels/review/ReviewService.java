@@ -1,10 +1,14 @@
 package com._onWheels._onWheels.review;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com._onWheels._onWheels.Order;
+import com._onWheels._onWheels.OrderItem;
+import com._onWheels._onWheels.OrderRepository;
 import com._onWheels._onWheels.User;
 import com._onWheels._onWheels.UserRepository;
 import com._onWheels._onWheels.Vehicle;
@@ -17,16 +21,20 @@ public class ReviewService {
 
     @Autowired
     private UserRepository userRepo;
+
     @Autowired
     private VehicleRepository vehicleRepo;
+
+    @Autowired
+    private OrderRepository orderRepo;
 
     public Review WriteReview(long userId, long vehicleId, ReviewDTO dto) throws CreateReviewException {
         Optional<User> user = userRepo.findById(userId);
         User u = user.orElseThrow();
         Optional<Vehicle> vehicle = vehicleRepo.findById(vehicleId);
-        Vehicle v =  vehicle.orElseThrow();
+        Vehicle v = vehicle.orElseThrow();
 
-        Review review = new Review(u, dto.getReview(), dto.getRating() , v );
+        Review review = new Review(u, dto.getReview(), dto.getRating(), v);
 
         if (isVehiclePurchased(review.getUser().getId(), review.getVehicle().getId())) {
             Review r = reviewRepository.save(review);
@@ -38,6 +46,16 @@ public class ReviewService {
     }
 
     private boolean isVehiclePurchased(long userId, long vehicleId) {
-        return true;
+        List<Order> orders = orderRepo.findByUserIdWithItems(userId);
+        if (orders.size() > 0) {
+            for (Order o : orders) {
+                for (OrderItem item : o.getOrderItems()) {
+                    if (Long.parseLong(item.getProductId()) == vehicleId) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

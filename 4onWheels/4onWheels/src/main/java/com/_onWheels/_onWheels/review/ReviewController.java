@@ -20,9 +20,9 @@ import com._onWheels._onWheels.Vehicle;
 import com._onWheels._onWheels.VehicleRepository;
 
 @Controller
-
 public class ReviewController {
-    // private static final Logger logger =  LoggerFactory.getLogger(ReviewController.class);
+    // private static final Logger logger =
+    // LoggerFactory.getLogger(ReviewController.class);
 
     @Autowired
     private VehicleRepository vehicleRepository;
@@ -36,36 +36,55 @@ public class ReviewController {
     @Autowired
     private UserRepository userRepo;
 
-    @GetMapping("/review/{vehicle_id}")
+    @GetMapping("/vehicle/{vehicle_id}")
     public String viewReviews(@PathVariable long vehicle_id, Model model) {
         Optional<Vehicle> vehicle = vehicleRepository.findById(vehicle_id);
         List<Review> reviews = reviewRepository.findAllByVehicleId(vehicle_id);
         Vehicle v = vehicle.orElse(new Vehicle());
         model.addAttribute("vehicle", v);
         model.addAttribute("reviews", reviews);
+        model.addAttribute("average_rating", avgRating(reviews));
 
-        return "review";
+        return "vehicle";
     }
+
+    private double avgRating(List<Review> reviews) {
+        double ratings = 0;
+        for( Review r : reviews) {
+            ratings += r.getRating();
+        }
+        return ratings / reviews.size();
+    }
+
     @GetMapping("/review_form/{vehicle_id}")
     public String reviewForm(@PathVariable long vehicle_id, Model model) {
-        // Optional<Vehicle> vehicle = vehicleRepository.findById(vehicle_id);
-        // List<Review> reviews = reviewRepository.findAllByVehicleId(vehicle_id);
-        // Vehicle v = vehicle.orElse(new Vehicle());
-        // model.addAttribute("vehicle", v);
-        // model.addAttribute("reviews", reviews);
+        Optional<Vehicle> vehicle = vehicleRepository.findById(vehicle_id);
+        List<Review> reviews = reviewRepository.findAllByVehicleId(vehicle_id);
+        Vehicle v = vehicle.orElse(new Vehicle());
+        model.addAttribute("vehicle", v);
+        model.addAttribute("reviews", reviews);
 
         return "review_form";
-    } 
-
-    @PostMapping("/review/{vehicle_id}")
-    public void WriteReview(@PathVariable long vehicle_id, @ModelAttribute ReviewDTO review, Principal principal) {
-        try {
-            User u = userRepo.findByEmail(principal.getName());
-            if (u == null) { return; }
-            reviewService.WriteReview(u.getId(), vehicle_id, review);
-        } catch (Exception e) {
-            // logger.error(e);
-        }
     }
 
+    @PostMapping("/review/{vehicle_id}")
+    public String WriteReview(@PathVariable String vehicle_id, @ModelAttribute ReviewDTO review, Principal principal) {
+        try {
+            User u = userRepo.findByEmail(principal.getName());
+            System.out.println(principal.getName());
+            System.out.println(u);
+            if (u != null) {
+               Review r = reviewService.WriteReview(u.getId(), Long.parseLong(vehicle_id), review);
+               if(r == null) {
+                System.out.println("Review not Created");
+               }
+            }
+            
+        } catch (Exception e) {
+            // logger.error(e);
+            System.out.println(e);
+        }
+        return "redirect:/vehicle/" + vehicle_id;
+        // return "redirect:/newVehicle/" + vehicle_id;
+    }
 }

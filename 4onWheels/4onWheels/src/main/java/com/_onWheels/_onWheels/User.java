@@ -36,6 +36,15 @@ public class User {
 		this.createdAt = createdAt;
 	}
 
+	public User( String email, String password, String firstName, String lastName, LocalDateTime createdAt) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.createdAt = createdAt;
+	}
+
 	public Long getId() {
 		return id;
 	}
