@@ -14,6 +14,8 @@ services:
     build: .
     restart: always
     container_name: 4onwheels-app
+    environment:
+      - "GEMINI_API_KEY=AIzaSyAr-WJJDA_FyQNthafuygCa1LWZPyWBpug"
     ports:
       - "8080:8080"
     depends_on:

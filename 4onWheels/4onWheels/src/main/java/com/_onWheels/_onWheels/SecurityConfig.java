@@ -22,10 +22,10 @@ public class SecurityConfig {
                 http
 
                                 .csrf(csrf -> csrf
-                                                .ignoringRequestMatchers("/api/**"))
+                                                .ignoringRequestMatchers("/api/**","chat"))
                                 .authorizeHttpRequests(auth -> auth
                                                 .requestMatchers("/css/**", "/js/**", "/register", "/api/register", "/login", "/HomePage", "/newVehicle/**", "/usedVehicle/**", "/cart/**", "compare/**","/admin/**",
-                                                        "/api/getLogs")
+                                                        "/api/getLogs","/chat/**","/chat")
                                                 .permitAll()
                                                 // Allow access to login/register
                                                 .anyRequest().authenticated())
