@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import com._onWheels._onWheels.ApiLog;
+import com._onWheels._onWheels.ApiLogService;
+
 import java.time.Instant;
 import java.util.List;
 import java.time.LocalDate;

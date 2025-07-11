@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chat</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h2>Ask OnWheels</h2>
+
+    <form id="chatForm">
+        <input type="text" id="message" placeholder="Type your question..." required />
+        <button type="submit">Send</button>
+    </form>
+
+    <h3>Response:</h3>
+    <p id="responseText"></p>
+
+    <script>
+        document.getElementById("chatForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const userMessage = document.getElementById("message").value;
+
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            const result = await response.text(); // or .json() depending on your backend response type
+            document.getElementById("responseText").innerText = result;
+        });
+    </script>
+</body>
+</html>
