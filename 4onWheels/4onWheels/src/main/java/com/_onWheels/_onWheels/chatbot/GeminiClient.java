@@ -1,4 +1,4 @@
-package com._onWheels._onWheels;
+package com._onWheels._onWheels.chatbot;
 
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentResponse;
