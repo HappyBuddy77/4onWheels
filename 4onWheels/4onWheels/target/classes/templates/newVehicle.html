@@ -30,7 +30,8 @@
                 <!-- Just A place holder right now will replace with Image from DB -->
                 <img th:src="${vehicles.image_url}" class="EV-image"> 
 
-                <form action="/cart" method="get" id="EV_details_new">
+                <form action="/newVehicle/add" method="post" id="EV_details_new">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <fieldset>
                     
                         <legend>Vehicle Details</legend>								<!-- Title of the Box -->
@@ -78,8 +79,11 @@
                                 Type: New	
                             </label>
                         
+                            <input type="hidden" name="productId" th:value="${vehicles.id}" />
+                            <input type="hidden" name="quantity" value="1" />
+
                         <div class="horizontal-labels">
-                            <button type="button" id="addToCart">Add To Cart</button>
+                            <button type="submit" id="addToCart">Add To Cart</button>
                             <button type="button" id="loanCalc">Calculate Loan</button>
                         </div>
 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<title>New Vehicle</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+		<link rel="stylesheet" th:href="@{/css/newVehicleStyle.css}" />
+		<!-- <script src="homeInputs.js"></script> -->
+		
+	</head>
+	<body>
+		<header>
+            <a href="/HomePage">
+			    <h1>4onWheels Home</h1>
+            </a>
+
+            <div class="header-icons">
+                
+                <a href="/cart" title="Shopping Cart"> 
+                    <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
+                </a>
+
+                <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
+                <!-- Add more icons as needed -->
+            </div>
+		</header>
+		<main>
+            <div class="container">
+
+                <!-- Just A place holder right now will replace with Image from DB -->
+                <form id="EV_details_1">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <fieldset>
+                        <legend>Vehicle 1 Details</legend>								<!-- Title of the Box -->
+
+                            <label for="ID">
+                                ID: <span th:text="${vehicles1.id}"></span>
+                            </label>
+
+                            <label for="Make">
+                                Make: <span th:text="${vehicles1.make}"></span>
+                            </label>
+
+                            <label for="Model">
+                                Model: <span th:text="${vehicles1.model}"></span>
+                            </label>
+
+                            <label for="Colour">
+                                Colour: <span th:text="${vehicles1.color}"></span>
+                            </label>
+
+                            <label for="Price">
+                                Price: <span th:text="${vehicles1.price}"></span>
+                            </label>
+                            
+                            <label for="year">
+                                Year: <span th:text="${vehicles1.year}"></span>
+                            </label>
+
+                            <label for="Type">
+                                Type: <span th:text="${vehicles1.type}"></span>	
+                            </label>
+                    </fieldset>
+                </form>
+
+                <form id="EV_details_2">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <fieldset>
+                        <legend>Vehicle 2 Details</legend>								<!-- Title of the Box -->
+
+                            <label for="ID">
+                                ID: <span th:text="${vehicles2.id}"></span>
+                            </label>
+
+                            <label for="Make">
+                                Make: <span th:text="${vehicles2.make}"></span>
+                            </label>
+
+                            <label for="Model">
+                                Model: <span th:text="${vehicles2.model}"></span>
+                            </label>
+
+                            <label for="Colour">
+                                Colour: <span th:text="${vehicles2.color}"></span>
+                            </label>
+
+                            <label for="Price">
+                                Price: <span th:text="${vehicles2.price}"></span>
+                            </label>
+                            
+                            <label for="year">
+                                Year: <span th:text="${vehicles2.year}"></span>
+                            </label>
+
+                            <label for="Type">
+                                Type: <span th:text="${vehicles2.type}"></span>	
+                            </label>
+                    </fieldset>
+                </form>
+                
+            </div>
+		</main>
+		<footer>
+			<p>Something</p>
+		</footer>
+		</body>
+</html>

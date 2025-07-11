@@ -1,10 +1,14 @@
 package com._onWheels._onWheels;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "vehicles")
@@ -28,12 +32,15 @@ public class Vehicle {
     private String color;
     private String type; 
     
+    @Column(name = "ev_history")
+    private String evHistory;
+    
     private String battery_capacity; 
     @Column(name = "`range`")
     private String range;    
     private String charging_time;     
     private String top_speed;         
-    private String acceleration; 
+    private String acceleration;
     
     private String image_url;
     
@@ -54,5 +61,11 @@ public class Vehicle {
     // Helper method to format price
     public String getFormattedPrice() {
         return String.format("$%.2f", price);
+    }
+    public boolean isUsed() {
+        return "used".equalsIgnoreCase(type);
+        }
+    public boolean isNew() {
+        return "new".equalsIgnoreCase(type);
     }
 }

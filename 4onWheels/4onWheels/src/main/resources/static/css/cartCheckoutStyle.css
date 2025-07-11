@@ -48,6 +48,7 @@ form label {
     border-radius: 5px;
     cursor: pointer;
     float: right;
+    position: relative;
 }
 .cart-details {
     margin-top: 30px;

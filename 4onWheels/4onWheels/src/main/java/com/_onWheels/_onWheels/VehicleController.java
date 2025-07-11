@@ -37,7 +37,15 @@ public class VehicleController {
 		return "newVehicle";
 	}
 	
-	
+	@GetMapping("/compare/{id1}/{id2}")
+	public String compareVehicles(@PathVariable Long id1, @PathVariable Long id2, Model model) {
+		Optional<Vehicle> vehicle1 = vehicleRepository.findById(id1);
+		Optional<Vehicle> vehicle2 = vehicleRepository.findById(id2);
+		model.addAttribute("vehicles1",vehicle1.get());
+		model.addAttribute("vehicles2",vehicle2.get());
+		return "compare";
+	}
+
 	@GetMapping("/vehicles/sort")
 	public String sortVehicles(@RequestParam String sortbY, Model model) {
 		
