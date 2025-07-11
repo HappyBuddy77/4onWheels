@@ -25,4 +25,6 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
     List<Vehicle> findAllByOrderByPriceDesc();
     
     List<Vehicle> findAllByOrderByYearDesc();
+    
+    List<Vehicle> findTop5ByOrderByUserViewsDesc();
 }
