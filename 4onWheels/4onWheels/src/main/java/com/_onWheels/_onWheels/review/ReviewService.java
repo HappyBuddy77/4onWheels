@@ -28,6 +28,18 @@ public class ReviewService {
     @Autowired
     private OrderRepository orderRepo;
 
+    public List<Review> findAllByVehicleId(long vehicleId){
+        return reviewRepository.findAllByVehicleId(vehicleId);
+    }
+
+    public double avgRating(List<Review> reviews) {
+        double ratings = 0;
+        for (Review r : reviews) {
+            ratings += r.getRating();
+        }
+        return ratings / reviews.size();
+    }
+
     public Review WriteReview(long userId, long vehicleId, ReviewDTO dto) throws CreateReviewException {
         Optional<User> user = userRepo.findById(userId);
         User u = user.orElseThrow();
@@ -58,4 +70,5 @@ public class ReviewService {
         }
         return false;
     }
+    
 }

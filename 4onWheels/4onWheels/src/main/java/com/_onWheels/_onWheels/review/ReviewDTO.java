@@ -6,4 +6,5 @@ import lombok.Data;
 public class ReviewDTO {
     private String review;
     private double rating;
+    private String redirect;
 }

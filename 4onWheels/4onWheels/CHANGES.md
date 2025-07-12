@@ -1,8 +1,37 @@
 Sprint 1 Login
 
 > Author @vinceflores
-- Dockerize the app
-- Fix registration
+
+- backend for review (writing reviews, calculating avg review rating for a vehicle)
+- displaying reviews as list in usedVehicle and newVehicle
+
+### Package: src/main/java/com/\_onWheels/\_onWheels/review
+
+Classes:
+
+- `Review.java`: Entity class
+- `ReviewController.java`: Controller for writing a review
+- `ReviewDTO.java`: The data transfer object for writing a review
+- `ReviewRepository.java`: Interacting with the database
+- `ReviewService.java`: Service methods finding reviews by vehicle id, writing review, calculating average rating for a vehicle
+
+HTML reusable template/fragments files:
+-`review-list.html`: view fragment for listing reviews
+-`review-form.html`: view fragment for writing review
+
+Javascript files:
+
+- `review-list.js`: For sorting the list of reviews in review-list.html
+
+### Package: src/main/java/com/\_onWheels/\_onWheels/database
+
+Ckasses:
+
+- `DatabaseSeed.java`: for seeding databse to test review feature
+
+### OThers
+
+- `logoutbtn.html`: Reuseable logout button
 
 Resources
 
