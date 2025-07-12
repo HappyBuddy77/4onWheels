@@ -31,10 +31,16 @@ public class OrderItem {
     private double price;
     
     @Column(name = "product_image")
-    private String productImage;
+    private String product_img;
     
+	private String battery_capacity; 
+    @Column(name = "`range`")
+    private String range;    
+    private String charging_time;     
+    private String top_speed;         
     private String acceleration;
-    private String battery_capacity;
+    private String color;
+    
     public OrderItem(Order order, String productName, String productId, int quantity, double price) {
         this.order = order;
         this.productName = productName;
@@ -42,6 +48,21 @@ public class OrderItem {
         this.quantity = quantity;
         this.price = price;
     }
+    
+    public OrderItem(Order order, CartItem cartItem) {
+        this.order = order;
+        this.productName = cartItem.getProductName();
+        this.productId = cartItem.getProductId();
+        this.quantity = cartItem.getQuantity();
+        this.price = cartItem.getPrice();
+        this.battery_capacity = cartItem.getBattery_capacity();
+        this.range = cartItem.getRange();
+        this.charging_time = cartItem.getCharging_time();
+        this.top_speed = cartItem.getTop_speed();
+        this.acceleration = cartItem.getAcceleration();
+        this.product_img = cartItem.getProduct_img();
+        this.color = cartItem.getColor();
+        }
     
     public double getTotalPrice() {
         return price * quantity;

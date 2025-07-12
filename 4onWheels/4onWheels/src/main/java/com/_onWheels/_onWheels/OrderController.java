@@ -81,7 +81,7 @@ public class OrderController {
 	    
 	    for(CartItem cartItem: cart.getCartItems()) {
 	    	
-	    	OrderItem orderItem = new OrderItem(order,cartItem.getProductName(),cartItem.getProductId(),cartItem.getQuantity(),cartItem.getPrice());
+	    	OrderItem orderItem = new OrderItem(order,cartItem);
 	    	
 	    	orderItemRepository.save(orderItem);
 	    }
