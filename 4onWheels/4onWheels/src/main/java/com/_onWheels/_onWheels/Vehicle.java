@@ -45,6 +45,7 @@ public class Vehicle {
     private String image_url;
     @Column(name = "user_views", columnDefinition =  "INTEGER DEFAULT 0")
     private int userViews = 0;
+    private int qty = 0;
     
     // Custom constructor for basic vehicle
     public Vehicle(String make, String model, int year, double price, String description) {
@@ -75,5 +76,11 @@ public class Vehicle {
     
     public void incrementViews() {
         this.userViews++;
+    }
+    public int getQty() {
+    return qty;
+    }
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 }

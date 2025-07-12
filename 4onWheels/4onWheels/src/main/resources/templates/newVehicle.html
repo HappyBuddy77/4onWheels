@@ -6,7 +6,8 @@
         <link rel="stylesheet" th:href="@{/css/style.css}" />
 		<link rel="stylesheet" th:href="@{/css/newVehicleStyle.css}" />
 		<!-- <script src="homeInputs.js"></script> -->
-		
+		<script type="text/javascript" th:src="@{/js/vehicle.js}"></script>
+
 	</head>
 	<body>
 		<header>
@@ -38,31 +39,87 @@
 
                             <label for="ID">
                                 ID: <span th:text="${vehicles.id}"></span>
-                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 
                             <label for="Make">
                                 Make: <span th:text="${vehicles.make}"></span>
-                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 
                             <label for="Model">
                                 Model: <span th:text="${vehicles.model}"></span>
-                                <!-- Change to read avalible Models from database later -->                             
-                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="description">
+                                Description: <span th:text="${vehicles.description}"></span>
                             </label>
 
                             <label for="Colour">
                                 Colour:
-                                <!-- Change to read avalible Colours from database later -->
-                                <select id="Colour" name="Colour">
-                                    <option value="">-- Select Colour --</option>
+                                <select id="color" name="color">
                                     <option value="White">White</option>
                                     <option value="Black">Black</option>
                                     <option value="Blue">Blue</option>
                                     <option value="Red">Red</option>
                                 </select>                            
-                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="Battery">
+                                Battery Capacity (kWh):
+                                <select id="battery_capacity" name="battery_capacity">
+                                    <option value="50">50</option>
+                                    <option value="60">60</option>
+                                    <option value="70">70</option>
+                                    <option value="80">80</option>
+                                    <option value="90">90</option>
+                                    <option value="100">100</option>
+                                </select>                            
+                            </label>
+
+                            <label for="charge">
+                                Charging Time (Hours):
+                                <!-- Change to read avalible Colours from database later -->
+                                <select id="charging_time" name="charging_time">
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>                            
+                            </label>
+
+                            <label for="range">
+                                Range (Miles):
+                                <select id="range" name="range">
+                                    <option value="400">400</option>
+                                    <option value="350">350</option>
+                                    <option value="300">300</option>
+                                    <option value="250">250</option>
+                                </select>                            
+                            </label>
+
+                            <label for="top_speed">
+                                Top Speed (mph):
+                                <select id="top_speed" name="top_speed">
+                                    <option value="150">150</option>
+                                    <option value="175">175</option>
+                                    <option value="200">200</option>
+                                    <option value="250">250</option>
+
+                                </select>                            
+                            </label>
+
+                            <label for="acceleration">
+                                Acceleration (Sec):
+                                <!-- Change to read avalible Colours from database later -->
+                                <select id="acceleration" name="acceleration">
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="10">10</option>
+                                </select>                            
                             </label>
 
                             <label for="Price">
@@ -79,8 +136,14 @@
                                 Type: New	
                             </label>
                         
-                            <input type="hidden" name="productId" th:value="${vehicles.id}" />
+                            <input type="hidden" name="productId" th:value="${vehicles.id}"/>
                             <input type="hidden" name="quantity" value="1" />
+                            <input type="hidden" name="color_hidden" id="color_hidden" value=""/>
+                            <input type="hidden" name="battery_capacity_hidden" id="battery_capacity_hidden" value=""/>
+                            <input type="hidden" name="range_hidden" id="range_hidden" value=""/>
+                            <input type="hidden" name="charging_time_hidden" id="charging_time_hidden" value=""/>
+                            <input type="hidden" name="top_speed_hidden" id="top_speed_hidden" value=""/>
+                            <input type="hidden" name="acceleration_hidden" id="acceleration_hidden" value=""/>
 
                         <div class="horizontal-labels">
                             <button type="submit" id="addToCart">Add To Cart</button>

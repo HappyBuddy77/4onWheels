@@ -20,6 +20,8 @@ form label {
     row-gap: 20px;
     width: 1700px;
     margin: 0 auto;
+    top: 70px;
+
 }
 /* Style the EV picture */
 .EV-image {

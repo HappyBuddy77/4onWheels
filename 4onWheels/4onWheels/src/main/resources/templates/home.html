@@ -38,11 +38,6 @@
 					
 					<div class="horizontal-labels">
 
-						<label for="ID">
-							ID: <input type="text" id="id" name="id">	
-							<span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
-						</label>
-
 						<label for="Make">
 							Make: <input type="text" id="make" name="Make">	
 							<span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
@@ -60,6 +55,15 @@
 
 						<label for="Type">
 							Type: <input type="text" id="type" name="Type">	
+							<span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+						</label>
+
+						<label for="EV-History">
+							EV History:
+							<select id="evHistory" name="evHistory">
+								<option value="No History">No History</option>
+								<option value="History">History</option>
+							</select>	
 							<span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
 						</label>
 					
@@ -115,13 +119,17 @@
 					<th>TYPE
 						<button class="sort-btn" onclick="sortTable(4, 'btn_type')" dir="no" id="btn_type">↑</button>
 					</th>
+					<th>PRICE
+						<button class="sort-btn" onclick="sortTable(5, 'btn_type')" dir="no" id="btn_type">↑</button>
+					</th>
 				</tr>
-				<tr th:each="vehicle : ${vehicles}">
+				<tr th:each="vehicle : ${vehicles}" th:attr="evhistory-data=${vehicle.evHistory}">
 					<td th:text="${vehicle.id}"></td>
 					<td th:text="${vehicle.make}"></td>
 					<td th:text="${vehicle.model}"></td>
 					<td th:text="${vehicle.year}"></td>
 					<td th:text="${vehicle.type}"></td>
+					<td th:text="${vehicle.price}"></td>
 				</tr>
 			</table>
 

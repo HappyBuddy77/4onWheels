@@ -1,10 +1,98 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/newVehicleStyle.css}" />
+    <link rel="stylesheet" th:href="@{/css/orderConfirmStyle.css}" />
+</head>
+
+<body>
+    <header>
+        <a href="/HomePage">
+            <h1>4onWheels Home</h1>
+        </a>
+
+        <div class="header-icons">
+            <a href="/cart" title="Shopping Cart">
+                <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
+            </a>
+
+            <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
+        </div>
+    </header>
+
+    <main>
+        <div class="order_form_details">
+            <form id="order_confirmation_form">
+                <fieldset>
+                    <legend>Order Confirmation</legend>
+
+                    <label for="orderNumber">
+                        Order Number: <span th:text="${order.orderNumber}"></span>
+                    </label>
+
+                    <label for="name">
+                        Name: <span th:text="${order.billingFirstName} + ' ' + ${order.billingLastName}"></span>
+                    </label>
+
+                    <label for="email">
+                        Email: <span th:text="${order.billingEmail}"></span>
+                    </label>
+
+                    <label for="phone">
+                        Phone: <span th:text="${order.billingPhone}"></span>
+                    </label>
+
+                    <label for="address">
+                        Address:
+                        <span th:text="${order.billingAddress} + ', ' + ${order.billingCity} + ', ' + ${order.billingProvince} + ' ' + ${order.billingPostalCode}"></span>
+                    </label>
+
+                    <label for="pickup">
+                        Pickup:
+                        <span th:text="${order.pickupLocation}"></span>,
+                        <span th:text="${order.pickupDate}"></span> at
+                        <span th:text="${order.pickupTime}"></span>
+                    </label>
+
+                    <label for="paymentMethod">
+                        Payment Method: <span th:text="${order.paymentMethod}"></span>
+                    </label>
+
+                    <label for="total">
+                        Total: $<span th:text="${order.total}"></span>
+                    </label>
+                </fieldset>
+            </form>
+
+            <div class="cart-details">
+                <h2>Items in Your Order</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${orderItems}">
+                            <td th:text="${item.productName}"></td>
+                            <td th:text="${item.quantity}"></td>
+                            <td>$<span th:text="${item.price}"></span></td>
+                            <td>$<span th:text="${item.price * item.quantity}"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Something</p>
+    </footer>
 </body>
 </html>

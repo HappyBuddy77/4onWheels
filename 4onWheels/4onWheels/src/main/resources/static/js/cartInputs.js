@@ -3,9 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCartTotal();
     const checkout = document.getElementById("btn_checkout");
 
-    checkout.addEventListener("click", function () {
+    checkout.addEventListener("click", function (event) {
         // Add more if cases to check if the payment and order are correct
-        window.location.href = `/cart`;
+        event.preventDefault();
+
+        var checkoutForm = document.getElementById('checkoutForm');
+        // var pickupForm = document.getElementById('pickupOption');
+        // var paymentForm = document.getElementById('paymentOption');
+
+        checkoutForm.submit();  
+        // pickupForm.submit();    
+        // paymentForm.submit(); 
     });
 
     document.getElementById("paymentType").addEventListener("change", function () {
@@ -40,6 +48,7 @@ function updateCartTotal() {
     // Update the total price in the last row
     console.log("total found: ", total);
     document.getElementById("total-price").textContent = "$" + total.toFixed(2);
+    document.getElementById('total_amount').value = total.toFixed(2);
 }
 
 function deleteItem(event, cartItemId) {

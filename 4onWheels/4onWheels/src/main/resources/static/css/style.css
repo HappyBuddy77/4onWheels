@@ -100,7 +100,7 @@ header {
 /* Header link styling from HEAD */
 header a {
     text-decoration: none;
-    color: white; /* from HEAD */
+    color: #007BFF; /* from HEAD */
 }
 
 /* Header icons from HEAD */
@@ -108,12 +108,12 @@ header a {
     display: flex;
     align-items: center;
     gap: 15px;
+    color: #007BFF;
 }
 .header-icons .icon {
     width: 24px;
     height: 24px;
     cursor: pointer;
-    filter: brightness(0) invert(1);
 }
 
 /* Footer from HEAD */

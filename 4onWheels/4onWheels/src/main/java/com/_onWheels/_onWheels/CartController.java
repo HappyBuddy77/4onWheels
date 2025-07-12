@@ -2,6 +2,7 @@ package com._onWheels._onWheels;
 
 
 import java.security.Principal;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,11 @@ public class CartController {
 	private CartService cartService;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private VehicleRepository vehicleRepository;
+	@Autowired
+	private CartItemRepository itemRepository;
+
 	
 	@GetMapping("/cart")
 	public String viewAllCart(Principal principal,Model model) {
@@ -43,23 +49,40 @@ public class CartController {
 	}
 	
 	@PostMapping("/newVehicle/add")
-	public String addToCart_newVehicle(@RequestParam String productId, @RequestParam int quantity, Principal principal) {
+	public String addToCart_newVehicle(	@RequestParam String productId, @RequestParam int quantity, 
+										@RequestParam String color_hidden, @RequestParam String battery_capacity_hidden, 
+										@RequestParam String range_hidden, @RequestParam String charging_time_hidden, 
+										@RequestParam String top_speed_hidden, @RequestParam String acceleration_hidden, Principal principal) {
 		
 		String userEmail = principal.getName();
 
 		User user = userRepository.findByEmail(userEmail);
-		
+		Optional<Vehicle> vehicleOpt = vehicleRepository.findById(Long.valueOf(productId));		
 		if(user == null) {
             throw new RuntimeException("User not found: " + userEmail);
-
 		}
-		cartService.addItemToCart(user.getId(), productId, quantity);
+		Vehicle vehicle;
+		
+		if(vehicleOpt.isPresent()) {
+			vehicle = vehicleOpt.get();
+			if(vehicle.getQty() >= quantity) {
+				cartService.addItemToCart(user.getId(), productId, quantity, color_hidden, battery_capacity_hidden, range_hidden, charging_time_hidden, top_speed_hidden, acceleration_hidden);
 
+				vehicle.setQty(vehicle.getQty() - quantity);
+				vehicleRepository.save(vehicle);
+ 			}
+			else {
+
+			}			
+		}
 		return "redirect:/newVehicle/" + productId;
 	}
 
 	@PostMapping("/usedVehicle/add")
-	public String addToCart_usedVehicle(@RequestParam String productId, @RequestParam int quantity, Principal principal) {
+	public String addToCart_usedVehicle(@RequestParam String productId, @RequestParam int quantity, 
+										@RequestParam String color, @RequestParam String battery_capacity, 
+										@RequestParam String range, @RequestParam String charging_time, 
+										@RequestParam String top_speed, @RequestParam String acceleration, Principal principal) {
 		
 		String userEmail = principal.getName();
 
@@ -69,7 +92,7 @@ public class CartController {
             throw new RuntimeException("User not found: " + userEmail);
 
 		}
-		cartService.addItemToCart(user.getId(), productId, quantity);
+		cartService.addItemToCart(user.getId(), productId, quantity, color, battery_capacity, range,charging_time, top_speed, acceleration);
 
 		return "redirect:/usedVehicle/" + productId;
 	}
@@ -87,10 +110,22 @@ public class CartController {
 	@PostMapping("/cart/remove")
 	public String removeItem(@RequestParam Long cartItem) {
 		
+		Optional<CartItem> itemOpt = itemRepository.findById(Long.valueOf(cartItem));
+		CartItem item;
+		
+		if(itemOpt.isPresent()) {
+			item = itemOpt.get();
+			String evID = item.getProductId();
+			Optional<Vehicle> vehicleOpt = vehicleRepository.findById(Long.valueOf(evID));
+			Vehicle vehicle;
 
+			if(vehicleOpt.isPresent()) {
+				vehicle = vehicleOpt.get();
+				vehicle.setQty(vehicle.getQty() + item.getQuantity());
+				vehicleRepository.save(vehicle);		
+			}
+		}
 		cartService.removeItem(cartItem);
-
-
 		return "redirect:/cart";
 	}
 	@PostMapping("/cart/clear")

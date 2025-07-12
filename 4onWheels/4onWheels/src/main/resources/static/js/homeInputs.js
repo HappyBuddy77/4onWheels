@@ -113,14 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             };
 
-            // const queryString = new URLSearchParams(data).toString();
-            // if(cells[4].innerText == "Used") {
-            //     window.location.href = `/usedVehicle?${queryString}`;
-            // }
-            // else {
-            //     window.location.href = `/newVehicle?${queryString}`;
-            // }
-
             if(cells[4].innerText == "Used") {
                 window.location.href = `/usedVehicle/${data.id}`;
             } else {
@@ -136,11 +128,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Filter Vehicle 
     filter_on.addEventListener("click", function () {
         // Get input values
-        const filterID = document.getElementById("id").value.toLowerCase();
         const filterMake = document.getElementById("make").value.toLowerCase();
         const filterModel = document.getElementById("model").value.toLowerCase();
         const filterYear = document.getElementById("year").value.toLowerCase();
         const filterType = document.getElementById("type").value.toLowerCase();
+        const filterEvHistory = document.getElementById("evHistory").value;
 
         // const rows = table.getElementsByTagName("tr");
 
@@ -148,18 +140,19 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 1; i < rows.length; i++) {
             const cells = rows[i].getElementsByTagName("td");
 
-            const id = cells[0].innerText.toLowerCase();
             const make = cells[1].innerText.toLowerCase();
             const model = cells[2].innerText.toLowerCase();
             const year = cells[3].innerText.toLowerCase();
             const type = cells[4].innerText.toLowerCase();
+            const evHistory = rows[i].getAttribute("evhistory-data");
 
             const match =
-                (filterID == "" || id.includes(filterID)) &&
                 (filterMake == "" || make.includes(filterMake)) &&
                 (filterModel == "" || model.includes(filterModel)) &&
                 (filterYear == "" || year.includes(filterYear)) &&
-                (filterType == "" || type.includes(filterType));
+                (filterType == "" || type.includes(filterType)) &&
+                (filterEvHistory === "" || (filterEvHistory === "History" && evHistory != "" && evHistory != null) ||
+                (filterEvHistory === "No History" && (evHistory === "" || evHistory === null)));
 
             if(match) {
                 rows[i].style.display = "";

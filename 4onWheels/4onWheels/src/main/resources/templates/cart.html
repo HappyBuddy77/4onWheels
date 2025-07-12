@@ -39,7 +39,8 @@
 
             <div class="container">
                 <!-- Just A place holder right now will replace with Image from DB -->
-                <form action="/HomePage" method="post" id="HomePage">
+                <form action="/checkout" method="post" id="checkoutForm">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                     <fieldset>
                         <legend>Payment Details</legend>								<!-- Title of the Box -->
                         <div class="horizontal-labels">
@@ -74,7 +75,7 @@
                             </label>
 
                             <label for="addressProvice">
-                                Province: <input class="middle" type="text" id="addressCity" name="addressCity">	
+                                Province: <input class="middle" type="text" id="addressProvince" name="addressProvince">	
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 
@@ -99,43 +100,14 @@
                             </label>
                         </div>
                     </fieldset>
-                </form>
+                <!-- </form> -->
 
-                <div class="cart-details">
-                    <h2>Cart Details</h2>
-                    <table id="cartDetails-table">
-                        <thead>
-                            <tr class="cart-item">
-                                <th>ID</th>
-                                <th>Item</th>
-                                <th>Price</th>
-                                <th>Edit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="item : ${cartItems}" class="cart-item">
-                                <td th:text="${item.productId}"></td>
-                                <td th:text="${item.productName}"></td>
-                                <td th:text="${item.price}"></td>
-                                <td class="delete-item">
-                                    <i class="trash-icon" th:attr="onclick=|deleteItem(event, ${item.id})|" style="cursor:pointer;">🗑️</i>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="3"><strong>Total</strong></td>
-                                <td><strong id="total-price">$0.00</strong></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
+            <!-- </div> -->
 
-            <div class="container">
-                <form action="/HomePage" method="post" id="pickupOption">
+            <!-- <div class="container"> -->
+                <!-- <form action="/checkout" method="post" id="pickupOption"> -->
                     <fieldset>
-                        <legend>Payment Options</legend>
+                        <legend>Pickup Options</legend>
 
                             <label for="pickupLocation">
                                 Pickup Location: 
@@ -168,9 +140,9 @@
                                 </select>									
                             </label>
                     </fieldset>
-                </form>
+                <!-- </form>
 
-                 <form action="/HomePage" method="post" id="paymentOption">
+                 <form action="/checkout" method="post" id="paymentOption"> -->
                     <fieldset>
                         <legend>Payment Options</legend>
                             <label for="paymentOption">
@@ -198,11 +170,43 @@
                                     </select>		
                                 </label>
 
+                                <input type="hidden" id="total_amount" name="total_amount" value="0.00">
                                 <p><strong>Estimated Monthly Payment: <span id="monthlyPayment">$0.00</span></strong></p>
                             </div>
                             
                     </fieldset>
                 </form>
+
+
+                <div class="cart-details">
+                    <h2>Cart Details</h2>
+                    <table id="cartDetails-table">
+                        <thead>
+                            <tr class="cart-item">
+                                <th>ID</th>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item : ${cartItems}" class="cart-item">
+                                <td th:text="${item.productId}"></td>
+                                <td th:text="${item.productName}"></td>
+                                <td th:text="${item.price}"></td>
+                                <td class="delete-item">
+                                    <i class="trash-icon" th:attr="onclick=|deleteItem(event, ${item.id})|" style="cursor:pointer;">🗑️</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"><strong>Total</strong></td>
+                                <td><strong id="total-price">$0.00</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
 
             </div>
             <button class="next-button" id="btn_checkout">Next ➔</button>

@@ -6,7 +6,7 @@
         <link rel="stylesheet" th:href="@{/css/style.css}" />
 		<link rel="stylesheet" th:href="@{/css/newVehicleStyle.css}" />
 		<!-- <script src="homeInputs.js"></script> -->
-		
+		<script type="text/javascript" th:src="@{/js/vehicle.js}"></script>
 	</head>
 	<body>
 		<header>
@@ -29,29 +29,46 @@
                 <!-- Just A place holder right now will replace with Image from DB -->
                 <img th:src="${vehicles.image_url}" class="EV-image"> 
 
-                <form action="/cart" method="get" id="EV_details_used">
+                <form action="/usedVehicle/add" method="post" id="EV_details_used">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <fieldset>
                     
                         <legend>Vehicle Details</legend>								<!-- Title of the Box -->
 
                             <label for="ID">
                                 ID: <span th:text="${vehicles.id}"></span>
-                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 
                             <label for="Make">
                                 Make: <span th:text="${vehicles.make}"></span>
-                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 
                             <label for="Model">
                                 Model: <span th:text="${vehicles.model}"></span>
-                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
 
                             <label for="Colour">
                                 Colour: <span th:text="${vehicles.color}"></span>
-                                <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
+                            </label>
+
+                            <label for="Battery">
+                                Battery Capacity (kWh): <span th:text="${vehicles.battery_capacity}"></span>
+                            </label>
+
+                            <label for="charge">
+                                Charging Time (Hours): <span th:text="${vehicles.charging_time}"></span>
+                            </label>
+
+                            <label for="range">
+                                Range (Miles): <span th:text="${vehicles.range}"></span>
+                            </label>
+
+                            <label for="top_speed">
+                                Top Speed (mph): <span th:text="${vehicles.top_speed}"></span>                         
+                            </label>
+
+                            <label for="acceleration">
+                                Acceleration (Sec): <span th:text="${vehicles.acceleration}"></span>         
                             </label>
 
                             <label for="Price">
@@ -72,9 +89,18 @@
                                 EV History: <span th:text="${vehicles.evHistory}"></span>
                                 <span class="error" aria-live="polite"></span>							<!-- References CSS Class "error" -->		
                             </label>
+
+                            <input type="hidden" name="productId" th:value="${vehicles.id}" />
+                            <input type="hidden" name="quantity" value="1" />
+                            <input type="hidden" name="color" th:value="${vehicles.color}" />
+                            <input type="hidden" name="battery_capacity" th:value="${vehicles.battery_capacity}" />
+                            <input type="hidden" name="range" th:value="${vehicles.range}" />
+                            <input type="hidden" name="charging_time" th:value="${vehicles.charging_time}" />
+                            <input type="hidden" name="top_speed" th:value="${vehicles.top_speed}" />
+                            <input type="hidden" name="acceleration" th:value="${vehicles.acceleration}" />
                         
                         <div class="horizontal-labels">
-                            <button type="button" id="addToCart">Add To Cart</button>
+                            <button type="submit" id="addToCart">Add To Cart</button>
                             <button type="button" id="loanCalc">Calculate Loan</button>
                         </div>
                         

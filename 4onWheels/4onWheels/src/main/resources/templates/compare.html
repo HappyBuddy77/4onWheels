@@ -27,7 +27,6 @@
 		<main>
             <div class="container">
 
-                <!-- Just A place holder right now will replace with Image from DB -->
                 <form id="EV_details_1">
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <fieldset>
@@ -45,6 +44,10 @@
                                 Model: <span th:text="${vehicles1.model}"></span>
                             </label>
 
+                            <label for="description">
+                                description: <span th:text="${vehicles1.description}"></span>
+                            </label>
+
                             <label for="Colour">
                                 Colour: <span th:text="${vehicles1.color}"></span>
                             </label>
@@ -55,6 +58,26 @@
                             
                             <label for="year">
                                 Year: <span th:text="${vehicles1.year}"></span>
+                            </label>
+
+                            <label for="range">
+                                Range: <span th:text="${vehicles1.range}"></span>
+                            </label>
+
+                            <label for="top_speed">
+                                Top Speed: <span th:text="${vehicles1.top_speed}"></span>
+                            </label>
+
+                            <label for="acceleration">
+                                Acceleration: <span th:text="${vehicles1.acceleration}"></span>
+                            </label>
+
+                            <label for="battery">
+                                Battery Capacity: <span th:text="${vehicles1.battery_capacity}"></span>
+                            </label>
+
+                            <label for="charge">
+                                Charging Time: <span th:text="${vehicles1.charging_time}"></span>
                             </label>
 
                             <label for="Type">
@@ -80,6 +103,10 @@
                                 Model: <span th:text="${vehicles2.model}"></span>
                             </label>
 
+                            <label for="description">
+                                description: <span th:text="${vehicles2.description}"></span>
+                            </label>
+
                             <label for="Colour">
                                 Colour: <span th:text="${vehicles2.color}"></span>
                             </label>
@@ -90,6 +117,26 @@
                             
                             <label for="year">
                                 Year: <span th:text="${vehicles2.year}"></span>
+                            </label>
+
+                            <label for="range">
+                                Range: <span th:text="${vehicles2.range}"></span>
+                            </label>
+
+                            <label for="top_speed">
+                                Top Speed: <span th:text="${vehicles2.top_speed}"></span>
+                            </label>
+
+                            <label for="acceleration">
+                                Acceleration: <span th:text="${vehicles2.acceleration}"></span>
+                            </label>
+
+                            <label for="battery">
+                                Battery Capacity: <span th:text="${vehicles2.battery_capacity}"></span>
+                            </label>
+
+                            <label for="charge">
+                                Charging Time: <span th:text="${vehicles2.charging_time}"></span>
                             </label>
 
                             <label for="Type">

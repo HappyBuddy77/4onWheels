@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 
 @Service
@@ -20,8 +22,8 @@ public class CartService {
 	@Autowired
 	VehicleRepository vehicleRepository;
 	
-	public Cart addItemToCart(Long userId, String productId, int quantity) {
-		
+	public Cart addItemToCart(Long userId, String productId, int quantity, String color, String battery_capacity, String range, String charging_time, String top_speed, String acceleration) {
+
 		Cart cart;
 		Optional<Cart> optionalCart = cartRepository.findByUserId(userId);
 		
@@ -44,7 +46,7 @@ public class CartService {
 			if(vehicleOpt.isPresent()) {
 				Vehicle vehicle = vehicleOpt.get();
 				
-				CartItem cartItem = new CartItem(cart,vehicle.getFullName(),productId,quantity,vehicle.getPrice());
+				CartItem cartItem = new CartItem(cart,vehicle.getFullName(),productId,quantity,color,battery_capacity,range,charging_time,top_speed,acceleration,vehicle.getPrice());
 				if (cart.getCartItems() == null) {
 				    cart.setCartItems(new ArrayList<>());
 				}
@@ -94,6 +96,7 @@ public class CartService {
 
 	}
 	
+	@Transactional
 	public void clearCart(Long userId) {
 		
 		Cart cart;
