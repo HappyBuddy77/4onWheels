@@ -33,6 +33,8 @@ public class OrderItem {
     @Column(name = "product_image")
     private String productImage;
     
+    private String acceleration;
+    private String battery_capacity;
     public OrderItem(Order order, String productName, String productId, int quantity, double price) {
         this.order = order;
         this.productName = productName;

@@ -104,6 +104,12 @@ public class CartService {
 		if(optionalCart.isPresent()) {
 			cart = optionalCart.get();
 			cartItemRepository.deleteByCart(cart);
+			
+			if(cart.getCartItems()!=null) {
+				cart.getCartItems().clear();
+			}
+			
+			cartRepository.save(cart);
 		}
 	}
 }
