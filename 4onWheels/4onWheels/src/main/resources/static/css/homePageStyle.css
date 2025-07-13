@@ -66,7 +66,7 @@ th, td {
 }
 /* Header and Background - For Table*/
 th {
-	background-color: #007BFF;
+	background-color: #007bffe5;
 	color: white;
 }
 /* Make every other row gray */
@@ -87,7 +87,7 @@ tr:not(:first-child):hover {
 	background: none;
 	background-color: #f1f1f1;
 	border: none;
-	color: #007BFF;
+	color: #007bffe5;
 	cursor: pointer;
 	margin-left: 8px;
 	font-size: 14px;
@@ -100,7 +100,7 @@ tr:not(:first-child):hover {
 }
 
 .sort-btn:hover {
-	color: #007BFF;
+	color: #007bffe5;
 	border-color: #f1f1f1;
 	background-color: #d0ebff;
 }

@@ -105,10 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // View Specific Vehicle
     for (let i = 1; i < rows.length; i++) {
         rows[i].addEventListener("click", function () {
-            // Highlight selected row
-            // for (let j = 1; j < rows.length; j++) {
-            //     rows[j].classList.remove("selected");
-            // }
+
             this.classList.add("selected");
 
             // Collect data from clicked row
@@ -124,9 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = `/newVehicle/${data.id}`;
             }
 
-            // Redirect to vehicle.html with query string
-            // const queryString = new URLSearchParams(data).toString();
-            // window.location.href = `vehicle.html?${queryString}`;
         });
     }
 
@@ -172,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
     filter_off.addEventListener("click", function () {
         filter_form.reset(); 
 
-        // const rows = document.getElementById("vehicleList").getElementsByTagName("tr");
         for (let i = 1; i < rows.length; i++) {
             rows[i].style.display = "";
         }
@@ -182,10 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Stop default submission
         const id1 = document.getElementById("compareID1").value;
         const id2 = document.getElementById("compareID2").value;
-
-        // Validate IDs if needed here
-
-        // Redirect to the dynamic path
         window.location.href = `/compare/${id1}/${id2}`;
     });
 	

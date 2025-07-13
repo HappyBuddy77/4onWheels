@@ -45,7 +45,7 @@ th, td {
 }
 /* Header and Background - For Table*/
 th {
-	background-color: #007BFF;
+	background-color: #007bffe5;
 	color: white;
 }
 /* Make every other row gray */
@@ -56,17 +56,11 @@ tr:nth-child(even) {
 tr.selected {
     background-color: #d0ebff;
 }
-/* When item is hovering
-tr:not(:first-child):hover {
-    background-color: #d0ebff;
-	cursor: pointer;
-} */
-    /* Style for sort buttons */
 .sort-btn {
 	background: none;
 	background-color: #f1f1f1;
 	border: none;
-	color: #007BFF;
+	color: #007bffe5;
 	cursor: pointer;
 	margin-left: 8px;
 	font-size: 14px;
