@@ -78,10 +78,18 @@
 				<!-- Hot Deals Form -->
 				<form class="hotdeals-form">
 					<fieldset>
-						<legend>Hot Deals</legend>
-						<input type="submit" value="Hot Deals!!" class="HotDeals-button">
+						<legend>Hot Deals!</legend>
+						<button type="button" onclick="hotDeals()" class="hotDeals-button">Hot Deals!!</button>
 					</fieldset>
 				</form>
+
+				<div id="hotDeals-popup" style="display:none;" class="hotDeals-popup">
+					<div class="popup">
+						<span class="hotDeals-close" onclick="closeHotDeals()">&times;</span>
+						<div id="hotDealsResults">
+						</div>
+					</div>
+				</div>
 
 				<!-- Compare Form -->
 				<form class="compare-form">
@@ -133,27 +141,28 @@
 				</tr>
 			</table>
 
+			<div id="hotDeals-fragment" th:fragment="hotDeals-popup" style="display:none;">
+				<table>
+					<tr>
+						<th>ID</th>
+						<th>MAKE</th>
+						<th>MODEL</th>
+						<th>PRICE</th>
+						<th>USER VIEWS</th>
+					</tr>
+					<tr th:each="vehicle : ${vehicles}">
+						<td th:text="${vehicle.id}"></td>
+						<td th:text="${vehicle.make}"></td>
+						<td th:text="${vehicle.model}"></td>
+						<td th:text="${vehicle.price}"></td>
+						<td th:text="${vehicle.userViews}"></td>
+					</tr>
+				</table>
+			</div>
+
 		</main>
 		<footer>
 			<p>Something</p>
 		</footer>
 		</body>
 </html>
-<!-- <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}" />
-  </head>
-  <body>
-    <div>
-      <h1>Home</h1>
-      <form th:action="@{/logout}" method="post">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-        <button type="submit">Logout</button>
-      </form>
-    </div>
-  </body>
-</html> -->

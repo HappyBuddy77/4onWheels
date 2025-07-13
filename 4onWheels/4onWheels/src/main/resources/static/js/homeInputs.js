@@ -6,83 +6,88 @@
 // Implemented to fit pourpose of project
 // Fix Arrow Buttons
 
-    function sortTable(n, btn) {
-        var switching = true;
-        var rows, i, x, y, switchcount = 0;
-        var shouldSwitch = true;
-        var table = document.getElementById("vehicleList");
-        //Set the sorting direction to ascending:
-        var dir = "asc"; 
-        /*Make a loop that will continue until
-        no switching has been done:*/
-        while (switching) {
-            //start by saying: no switching is done:
-            switching = false;
-            rows = table.rows;
-            /*Loop through all table rows (except the
-            first, which contains table headers):*/
-            for (i = 1; i < (rows.length - 1); i++) {
-                //start by saying there should be no switching:
-                shouldSwitch = false;
-                /*Get the two elements you want to compare,
-                one from current row and one from the next:*/
-                x = rows[i].getElementsByTagName("TD")[n];
-                y = rows[i + 1].getElementsByTagName("TD")[n];
+function sortTable(n, btn) {
+    var switching = true;
+    var rows, i, x, y, switchcount = 0;
+    var shouldSwitch = true;
+    var table = document.getElementById("vehicleList");
+    //Set the sorting direction to ascending:
+    var dir = "asc"; 
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
 
-                var isNumeric = !isNaN(x.innerHTML) && !isNaN(y.innerHTML);
+            var isNumeric = !isNaN(x.innerHTML) && !isNaN(y.innerHTML);
 
-                if (dir == "asc") {
-                    if (isNumeric) {
-                        // Compare as numbers if the values are numeric
-                        if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                    else {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            shouldSwitch= true;
-                            break;
-                        }
-                    }
-                } 
-                else if (dir == "desc") {
-                    if (isNumeric) {
-                        if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                    else{
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
+            if (dir == "asc") {
+                if (isNumeric) {
+                    // Compare as numbers if the values are numeric
+                    if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
+                        shouldSwitch = true;
+                        break;
                     }
                 }
-            }
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-                switchcount ++;
+                else {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch= true;
+                        break;
+                    }
+                }
             } 
-            else {
-                if (switchcount == 0 && dir == "asc") {
-                    dir = "desc";
-                    switching = true;
+            else if (dir == "desc") {
+                if (isNumeric) {
+                    if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                else{
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
                 }
             }
         }
-        // let originalDir = btn.getAttribute("dir");
-        // if (originalDir == "asc") {
-        //     btn.setAttribute("dir", "desc");
-        //     btn.textContent  = "↓";
-        // }
-        // else {
-        //     btn.setAttribute("dir", "asc");
-        //     btn.textContent  = "↑";
-        // }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount ++;
+        } 
+        else {
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
     }
+}
+
+function hotDeals() {
+    fetch('/HomePage/sort?sortbY=top_five')
+        .then(response => response.text())
+        .then(html => {
+
+        document.getElementById('hotDealsResults').innerHTML = html;
+        document.getElementById('hotDeals-popup').style.display = 'block';
+        document.getElementById('hotDeals-fragment').style.display = 'block';
+    })
+}
+function closeHotDeals() {
+    document.getElementById('hotDeals-popup').style.display = 'none';
+}
 
     
 

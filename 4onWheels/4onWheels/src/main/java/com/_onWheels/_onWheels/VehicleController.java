@@ -68,8 +68,8 @@ public class VehicleController {
 		return "compare";
 	}
 
-	@GetMapping("/vehicles/sort")
-	public String sortVehicles(@RequestParam String sortbY, Model model) {
+	@GetMapping("/HomePage/sort")
+	public String sortNewVehicles(@RequestParam String sortbY, Model model) {
 		
 		List<Vehicle>vehicles;
 		
@@ -96,6 +96,6 @@ public class VehicleController {
 			
 		}
 		model.addAttribute("vehicles",vehicles);
-		return "vehicles";
+		return "home :: hotDeals-popup";
 	}
 }

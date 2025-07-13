@@ -73,6 +73,12 @@
                     <thead>
                         <tr>
                             <th>Product</th>
+                            <th>Color</th>
+                            <th>Battery Capacity (kWh)</th>
+                            <th>Charging Time (Hours)</th>
+                            <th>range (Miles)</th>
+                            <th>Top Speed (Mph)</th>
+                            <th>Acceleration (Sec)</th>
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Subtotal</th>
@@ -81,6 +87,12 @@
                     <tbody>
                         <tr th:each="item : ${orderItems}">
                             <td th:text="${item.productName}"></td>
+                            <td th:text="${item.color}"></td>
+                            <td th:text="${item.battery_capacity}"></td>
+                            <td th:text="${item.charging_time}"></td>
+                            <td th:text="${item.range}"></td>
+                            <td th:text="${item.top_speed}"></td>
+                            <td th:text="${item.acceleration}"></td>
                             <td th:text="${item.quantity}"></td>
                             <td>$<span th:text="${item.price}"></span></td>
                             <td>$<span th:text="${item.price * item.quantity}"></span></td>
