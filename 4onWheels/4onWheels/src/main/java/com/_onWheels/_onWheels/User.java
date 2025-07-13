@@ -2,6 +2,9 @@ package com._onWheels._onWheels;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com._onWheels._onWheels.review.Review;
 
 //PlaceHolder
 @Entity
@@ -17,12 +20,24 @@ public class User {
 	private String lastName;
 	private LocalDateTime createdAt;
 
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<Review> reviews;
+
 	public User() {
 	}
 
 	public User(Long id, String email, String password, String firstName, String lastName, LocalDateTime createdAt) {
 		super();
 		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.createdAt = createdAt;
+	}
+
+	public User( String email, String password, String firstName, String lastName, LocalDateTime createdAt) {
+		super();
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;

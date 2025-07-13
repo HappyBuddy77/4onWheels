@@ -10,21 +10,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com._onWheels._onWheels.review.Review;
+import com._onWheels._onWheels.review.ReviewService;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 public class VehicleController {
 
 	@Autowired
 	private VehicleRepository vehicleRepository;
-	
-	@GetMapping("/HomePage")
+
+	@Autowired
+	private ReviewService reviewService;
+
+	// @GetMapping("/HomePage")
+	@GetMapping({ "/", "/HomePage" })
 	public String viewAllVehicles(Model model) {
 		List<Vehicle> vehicles = vehicleRepository.findAll();
-		model.addAttribute("vehicles",vehicles);
+		model.addAttribute("vehicles", vehicles);
 		return "home";
 	}
-	
+
 	@GetMapping("/usedVehicle/{id}")
-	public String viewUsedVehicleDetail(@PathVariable Long id,Model model) {
+	public String viewUsedVehicleDetail(@PathVariable Long id,Model model, HttpServletRequest req) {
 		Optional<Vehicle> vehicleOpt = vehicleRepository.findById(id);
 		
 		Vehicle vehicle;
@@ -36,6 +45,7 @@ public class VehicleController {
 		vehicleRepository.save(vehicle);
 		
 		model.addAttribute("vehicles",vehicle);
+		setReviews(id, model, req);
 		
 		return "usedVehicle";
 		}
@@ -43,7 +53,7 @@ public class VehicleController {
 	}
 
 	@GetMapping("/newVehicle/{id}")
-	public String viewNewVehicleDetail(@PathVariable Long id,Model model) {
+	public String viewNewVehicleDetail(@PathVariable Long id,Model model, HttpServletRequest req) {
 		Optional<Vehicle> vehicleOpt = vehicleRepository.findById(id);
 		Vehicle vehicle;
 		
@@ -53,10 +63,18 @@ public class VehicleController {
 			vehicle.incrementViews();
 			vehicleRepository.save(vehicle);
 			model.addAttribute("vehicles",vehicle);
+			setReviews(id, model, req);
 			return "newVehicle";
 			
 		}
 		return "redirect:/HomePage";
+	}
+
+	private void setReviews(long vehicle_id, Model model, HttpServletRequest req) {
+		List<Review> reviews = reviewService.findAllByVehicleId(vehicle_id);
+		model.addAttribute("reviews", reviews);
+		model.addAttribute("average_rating", reviewService.avgRating(reviews));
+		model.addAttribute("redirectPath", req.getRequestURI());
 	}
 	
 	@GetMapping("/compare/{id1}/{id2}")

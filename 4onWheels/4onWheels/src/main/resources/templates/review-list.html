@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vehicle</title>
+    <script type="text/javascript" th:src="@{/js/review-list.js}"></script>
+  </head>
+  <body>
+        <table th:fragment="review-list"  id="reviewList" style="width:100%">
+            <tr>
+                <th>ID</th>
+                <th>USER</th>
+                <th>RATING
+                    <button class="sort-btn" onclick="sortReviewList('asc')"  id="asc">Asc</button>
+                    <button class="sort-btn" onclick="sortReviewList('desc')"  id="desc">Desc</button>
+                </th>
+                <th>REVIEW</th>
+            </tr>
+            <tr th:attr="data-rating=${review.rating}" th:each="review: ${reviews}">
+                <td th:text="${review.id}"></td>
+                <td th:text="${review.user.email}"></td>
+                <td th:text="${review.rating}">Stars</td>
+                <td th:text="${review.review}"></td> 
+            </tr>
+        </table>
+  </body>
+</html>
