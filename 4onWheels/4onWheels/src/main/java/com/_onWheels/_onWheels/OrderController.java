@@ -68,11 +68,11 @@ public class OrderController {
 	    order.setBillingLastName(checkoutRequest.getLastName());
 	    order.setBillingEmail(checkoutRequest.getEmail());
 	    order.setBillingPhone(checkoutRequest.getPhone());
-	    order.setBillingAddress(checkoutRequest.getAddress());
-	    order.setBillingCity(checkoutRequest.getCity());
-	    order.setBillingProvince(checkoutRequest.getProvince());
-	    order.setBillingPostalCode(checkoutRequest.getPostal_code());
-	    order.setPaymentMethod(checkoutRequest.getPaymentMethod());
+	    order.setBillingAddress(checkoutRequest.getAddressStreet());
+	    order.setBillingCity(checkoutRequest.getAddressCity());
+	    order.setBillingProvince(checkoutRequest.getAddressProvince());
+	    order.setBillingPostalCode(checkoutRequest.getAddressPostal());
+	    order.setPaymentMethod(checkoutRequest.getPaymentType());
 	    order.setPickupLocation(checkoutRequest.getPickupLocation());
 	    order.setPickupDate(checkoutRequest.getPickupDate());
 	    order.setPickupTime(checkoutRequest.getPickupTime());

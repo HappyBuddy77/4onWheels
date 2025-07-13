@@ -1,10 +1,8 @@
 package com._onWheels._onWheels;
 
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -16,13 +14,13 @@ public class CheckoutRequest {
 	private String lastName;
 	private String email;
 	private String phone;
-	private String address;
-	private String city;
-	private String province;
-	private String postal_code;
+	private String addressStreet;
+	private String addressCity;
+	private String addressProvince;
+	private String addressPostal;
 	
 	//payment info
-	private String paymentMethod;
+	private String paymentType;
 	private String cardNumber;
 	private String expriyDate;
 	private String cvv;
