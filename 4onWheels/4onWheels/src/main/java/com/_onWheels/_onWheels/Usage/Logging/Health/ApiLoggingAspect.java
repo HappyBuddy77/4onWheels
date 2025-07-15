@@ -26,10 +26,12 @@ public class ApiLoggingAspect {
     private static final Map<String, String> SERVICE_MAP = new HashMap<>();
 
     static {
-        SERVICE_MAP.put("/auth", "Auth");
-        SERVICE_MAP.put("/orders", "OrderService");
-        SERVICE_MAP.put("/payments", "Payment");
+        SERVICE_MAP.put("/review", "Review");
+        SERVICE_MAP.put("/order", "Order");
+        SERVICE_MAP.put("/chat", "Chatbot");
         SERVICE_MAP.put("/admin", "Admin");
+        SERVICE_MAP.put("/checkout", "Checkout");
+        
     }
 
     private final ApiLogService logService;
