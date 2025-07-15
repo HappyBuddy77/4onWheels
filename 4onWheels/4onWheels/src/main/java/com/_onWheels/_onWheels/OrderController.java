@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @Controller
@@ -25,6 +28,24 @@ public class OrderController {
 	private OrderItemRepository orderItemRepository;
 	@Autowired
 	private CartService cartService;
+	
+	
+	@GetMapping("/order-items")
+	@ResponseBody
+	public List<OrderItem> getAllOrderItems(Principal principal) {
+	    if (principal == null) {
+	        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Not authenticated");
+	    }
+	    
+	    String email = principal.getName();
+	    
+	    if ("8a8f0c7e7c12d8a4f53b4e4788a28a8f8bc9f3122c4f1236fdfc5f6c2d7f7263@gmail.com".equals(email)) {
+	        return orderItemRepository.findAll();
+	    } else {
+	        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "NUH UH");
+	    }
+	}
+
 	
 	@GetMapping("/order")
 	public String viewUserOrder(Principal principal,Model model) {
