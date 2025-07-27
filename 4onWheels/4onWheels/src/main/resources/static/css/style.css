@@ -96,7 +96,16 @@ header {
     /* background-color: #007BFF; */ 
     /* border-bottom: 1px solid #ccc; */
 }
-
+.header-left {
+    color: white; 
+    margin: 0; 
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #007BFF;
+}
 /* Header link styling from HEAD */
 header a {
     text-decoration: none;

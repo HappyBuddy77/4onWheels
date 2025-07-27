@@ -9,7 +9,8 @@
 		
 	</head>
 	<body>
-		<header>
+        <header th:replace="~{header :: header}"></header>
+		<!-- <header>
             <a href="/HomePage">
 			    <h1>4onWheels Home</h1>
             </a>
@@ -21,9 +22,9 @@
                 </a>
 
                 <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
-                <!-- Add more icons as needed -->
+                Add more icons as needed
             </div>
-		</header>
+		</header> -->
 		<main>
             <div class="container">
 
@@ -146,6 +147,8 @@
                 </form>
                 
             </div>
+
+            <button type="button" onclick="window.location.href='/HomePage'" class="homepage_btn">Home Page</button>
 		</main>
 		<footer>
 			<p>Something</p>

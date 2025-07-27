@@ -171,11 +171,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.getElementById("compare_btn").addEventListener("click", function(event) {
-        event.preventDefault(); // Stop default submission
-        const id1 = document.getElementById("compareID1").value;
-        const id2 = document.getElementById("compareID2").value;
-        window.location.href = `/compare/${id1}/${id2}`;
-    });
+    // document.getElementById("compare_btn").addEventListener("click", function(event) {
+    //     event.preventDefault(); // Stop default submission
+    //     const id1 = document.getElementById("compareID1").value;
+    //     const id2 = document.getElementById("compareID2").value;
+    //     window.location.href = `/compare/${id1}/${id2}`;
+    // });
 	
+    document.getElementById('compare_btn').addEventListener('click', function(event) {
+		
+		event.preventDefault();
+		const id1 = document.getElementById("compareID1").value;
+        const id2 = document.getElementById("compareID2").value;
+        var isNumeric = !isNaN(id2) && !isNaN(id1);
+		
+		if (id1 == "") {
+			alert("Please Enter the ID of the first EV");
+			return;
+		}
+		if (id2 == "") {
+			alert("Please Enter the ID of the second EV");
+			return;
+		}
+		if (isNumeric == false) {
+			alert("Please Enter Numeric Values, IDs are Numeric");
+			return;
+		}
+		// If validation passes, call the server API
+		window.location.href = `/compare/${id1}/${id2}`;
+	});
 });

@@ -14,22 +14,7 @@
 		
 	</head>
 	<body>
-		<header>
-            <a href="/HomePage">
-			    <h1>4onWheels Home</h1>
-            </a>
-
-            <div class="header-icons">
-				
-                <a href="/cart" title="Shopping Cart"> 
-                    <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
-                </a>
-
-                <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
-                <!-- Add more icons as needed -->
-            </div>
-			<div th:replace="~{logoutbtn :: logoutbtn}"> </div>
-		</header>
+		<header th:replace="~{header :: header}"></header>
 
 		<main>
 			<form id="filter_form">
@@ -100,10 +85,12 @@
 							<label for="compareID1">
 								Vehicle ID 1:
 								<input type="text" id="compareID1" name="compareID1">
+								<span class="error" aria-live="polite"></span>
 							</label>
 							<label for="compareID2">
 								Vehicle ID 2:
 								<input type="text" id="compareID2" name="compareID2">
+								<span class="error" aria-live="polite"></span>
 							</label>
 							<button id="compare_btn" type="button">Compare EVs</button>
 						</div>
