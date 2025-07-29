@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com._onWheels._onWheels.User;
-import com._onWheels._onWheels.UserRepository;
+import com._onWheels._onWheels.users.User;
+import com._onWheels._onWheels.users.UserRepository;
 
 @Controller
 public class ReviewController {

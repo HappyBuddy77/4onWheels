@@ -1,13 +1,13 @@
 @charset "UTF-8";
 /* EV Details */
-form {
+#focheckoutFormrm {
 	padding: 20px;
 	width:800px;
     margin: 0;
     box-sizing: border-box;
 }
 /* Adding Space for the details */
-form label {
+#checkoutForm label {
     display: block;       
     margin-bottom: 15px;  
 }

@@ -6,8 +6,10 @@
 /* Base Body Styling */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
+  /* background-color: #121212; */
+  background-color: white;
   color: #e0e0e0;
+  /* color: black; */
   margin: 0;
   padding: 0;
   display: flex;
@@ -18,7 +20,8 @@ body {
 
 /* Wrapper Container */
 div {
-  background-color: #1e1e1e;
+  /* background-color: #1e1e1e; */
+  background-color: blue;
   padding: 2.5rem;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -31,6 +34,7 @@ h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #ffffff;
+  /* color: black; */
 }
 
 /* Form Styling */
@@ -51,10 +55,13 @@ input {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1.5rem;
-  border: 1px solid #333;
+  /* border: 1px solid #333; */
+  border: 1px solid grey;
   border-radius: 5px;
-  background-color: #2d2d2d;
-  color: #ffffff;
+  /* background-color: #2d2d2d; */
+  background-color: white;
+  /* color: #ffffff; */
+  color: black;
   font-size: 1rem;
   transition: border-color 0.3s;
 }
@@ -66,7 +73,8 @@ input:focus {
 
 /* Buttons */
 button {
-  background-color: #3a3a3a;
+  /* background-color: #3a3a3a; */
+  background-color: gray;
   color: white;
   padding: 0.75rem;
   border: none;
@@ -78,16 +86,10 @@ button {
 }
 
 button:hover {
-  background-color: #4a4a4a;
+  /* background-color: #4a4a4a; */
+  background-color: black;
 }
 
-.logout {
-  outline: 1px solid white;
-  width: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
 
 /* Responsive Design */
 @media (max-width: 480px) {
@@ -95,4 +97,8 @@ button:hover {
     padding: 1.5rem;
     margin: 0 1rem;
   }
+}
+
+.redirect-a {
+  color: lightblue;
 }

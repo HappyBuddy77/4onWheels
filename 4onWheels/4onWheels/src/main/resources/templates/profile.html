@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<title>New Vehicle</title>
+        
+            <link rel="stylesheet" th:href="@{/css/homePageStyle.css}" />
+            <link rel="stylesheet" th:href="@{/css/style.css}" />
+            <link rel="stylesheet" th:href="@{/css/profile.css}" />
+            
+
+        <script type="text/javascript" th:src="@{/js/cartInputs.js}"></script>
+        <meta name="_csrf" th:content="${_csrf.token}"/>
+        <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+	</head>
+	<body>
+            <header th:replace="~{header :: header}"></header>
+            <div class="profile-contianer">
+                <h1> User Profile </h1>
+                <div class="profile-field">
+                    <h3> Email:</h3>
+                    <p th:text="${user.email}"></p>
+                </div>
+                <div class="profile-field"> 
+                    <h3> First Name: </h3>
+                    <p th:text="${user.firstName}"></p>
+                </div>
+                <div class="profile-field">
+                    <h3> Last Name: </h3> 
+                    <p th:text="${user.lastName}"></p>
+                </div>
+                <div class="profile-field">
+                    <h3> Orders: </h3>
+                    <p th:text="${user.numebrOfOrders}"></p>
+                </div>
+            </div>
+            
+		<footer> </footer>
+		</body>
+</html>

@@ -1,7 +1,7 @@
 package com._onWheels._onWheels.review;
 
-import com._onWheels._onWheels.User;
 import com._onWheels._onWheels.Vehicle;
+import com._onWheels._onWheels.users.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

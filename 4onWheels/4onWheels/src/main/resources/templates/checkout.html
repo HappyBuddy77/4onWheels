@@ -9,21 +9,7 @@
 		
 	</head>
 	<body>
-		<header>
-            <a href="/HomePage">
-			    <h1>4onWheels Home</h1>
-            </a>
-
-            <div class="header-icons">
-                
-                <a href="/cart" title="Shopping Cart"> 
-                    <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
-                </a>
-
-                <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
-                <!-- Add more icons as needed -->
-            </div>
-		</header>
+	<header th:replace="~{header :: header}"></header>
 		<main>
             <form id="EV_details_1">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />

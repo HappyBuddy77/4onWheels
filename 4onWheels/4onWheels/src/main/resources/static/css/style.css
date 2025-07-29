@@ -85,8 +85,9 @@ header {
     width: 100vw;
     padding: 0 30px;
     background-color: var(--background-color1);
-    position: fixed;
-    z-index: 100;
+    /* position: fixed; */
+    position: sticky;
+    /* z-index: 100; */
     box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
     display: flex;
     justify-content: space-between;
@@ -102,6 +103,8 @@ header {
 }
 .header-right {
     display: flex;
+    width: 50%;
+    justify-content: space-between;
     align-items: center;
     gap: 15px;
     color: #007BFF;
@@ -115,9 +118,11 @@ header a {
 /* Header icons from HEAD */
 .header-icons {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     gap: 15px;
     color: #007BFF;
+    width: 100%;
 }
 .header-icons .icon {
     width: 24px;
@@ -492,4 +497,14 @@ legend {
     background-color: rgb(0, 177, 0);
     color: white;
     border-radius: 4px;
+}
+
+/* .logout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+} */
+
+.logout button {
+    background-color: blue;
 }

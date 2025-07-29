@@ -1,0 +1,18 @@
+.profile-contianer{
+    display: felx;
+    justify-content: center;
+    padding: 1rem;
+    width: 50%;
+    top: 70px;
+    z-index: 1;
+}
+
+.profile-field {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.profile-field p {
+    text-align: right;
+}

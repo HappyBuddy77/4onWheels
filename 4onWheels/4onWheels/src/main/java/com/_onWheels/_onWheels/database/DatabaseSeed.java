@@ -13,10 +13,10 @@ import com._onWheels._onWheels.Order;
 import com._onWheels._onWheels.OrderItem;
 import com._onWheels._onWheels.OrderItemRepository;
 import com._onWheels._onWheels.OrderRepository;
-import com._onWheels._onWheels.User;
-import com._onWheels._onWheels.UserRepository;
 import com._onWheels._onWheels.Vehicle;
 import com._onWheels._onWheels.VehicleRepository;
+import com._onWheels._onWheels.users.User;
+import com._onWheels._onWheels.users.UserRepository;
 
 @Component
 public class DatabaseSeed {

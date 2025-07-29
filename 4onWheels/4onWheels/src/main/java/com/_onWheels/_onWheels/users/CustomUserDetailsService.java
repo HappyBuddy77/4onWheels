@@ -1,4 +1,4 @@
-package com._onWheels._onWheels;
+package com._onWheels._onWheels.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

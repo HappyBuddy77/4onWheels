@@ -13,6 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com._onWheels._onWheels.users.CustomUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -35,7 +37,9 @@ public class SecurityConfig {
                                                 .defaultSuccessUrl("/HomePage", true)
                                                 .usernameParameter("email")
                                                 .permitAll())
-                                .logout(logout -> logout.permitAll());
+                                .logout(logout -> logout.permitAll())
+                                .rememberMe(Customizer.withDefaults());
+
 
                 return http.build();
         }
