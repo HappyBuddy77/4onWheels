@@ -34,6 +34,20 @@
                     <p th:text="${user.numebrOfOrders}"></p>
                 </div>
             </div>
+        <table style="width:100%">
+            <tr>
+                <th>Order #</th>
+                <th>Status</th>
+                <th># of Items</th>
+                <th>$ Total</th>
+            </tr>
+            <tr th:each="order: ${user.orders}">
+                <td th:text="${order.orderNumber}"></td>
+                <td th:text="${order.orderStatus}"></td>
+                <td th:text="${order.numOfItems}">Stars</td>
+                <td th:text="${order.totalAmount}">Stars</td>
+            </tr>
+        </table>    
             
 		<footer> </footer>
 		</body>

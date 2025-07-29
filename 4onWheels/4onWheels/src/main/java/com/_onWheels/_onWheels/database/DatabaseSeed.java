@@ -59,11 +59,11 @@ public class DatabaseSeed {
         }
 
         // order
-        if (user != null && vehicle != null) {
-            Order order = orderRepo.save(new Order(user.getId(), Order.generateOrderNumber(), vehicle.getPrice()));
-            // orderItem
-            orderItemRepo.save(
-                    new OrderItem(order, vehicle.getFullName(), Long.toString(vehicle.getId()), 1, vehicle.getPrice()));
-        }
+        // if (user != null && vehicle != null) {
+        //     Order order = orderRepo.save(new Order(user.getId(), Order.generateOrderNumber(), vehicle.getPrice()));
+        //     // orderItem
+        //     orderItemRepo.save(
+        //             new OrderItem(order, vehicle.getFullName(), Long.toString(vehicle.getId()), 1, vehicle.getPrice()));
+        // }
     }
 }

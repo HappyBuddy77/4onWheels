@@ -52,7 +52,7 @@ public class Vehicle {
     private String image_url;
     @Column(name = "user_views", columnDefinition =  "INTEGER DEFAULT 0")
     private int userViews = 0;
-    private int qty = 0;
+    private int qty = 1;
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Review> reviews;
