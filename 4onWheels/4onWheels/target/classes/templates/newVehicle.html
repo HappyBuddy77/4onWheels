@@ -12,22 +12,10 @@
         <script type="text/javascript" th:src="@{/js/review-list.js}"></script>	
 	</head>
 	<body>
-		<header>
-            <a href="/HomePage">
-			    <h1>4onWheels Home</h1>
-            </a>
+		<header th:replace="~{header :: header}"></header>
 
-            <div class="header-icons">
-                
-                <a href="/cart" title="Shopping Cart"> 
-                    <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
-                </a>
-
-                <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
-                <!-- Add more icons as needed -->
-            </div>
-		</header>
 		<main>
+
             <div class="container">
 
                 <!-- Just A place holder right now will replace with Image from DB -->
@@ -139,7 +127,7 @@
                             </label>
                         
                             <input type="hidden" name="productId" th:value="${vehicles.id}"/>
-                            <input type="hidden" name="quantity" value="1" />
+                            <input type="hidden" name="quantity" id="qty_hidden" th:value="${vehicles.qty}" />
                             <input type="hidden" name="color_hidden" id="color_hidden" value=""/>
                             <input type="hidden" name="battery_capacity_hidden" id="battery_capacity_hidden" value=""/>
                             <input type="hidden" name="range_hidden" id="range_hidden" value=""/>
@@ -154,7 +142,7 @@
 
                         <div class="horizontal-labels">
                             <button type="submit" id="addToCart">Add To Cart</button>
-                            <button type="button" id="loanCalc">Calculate Loan</button>
+                            <!-- <button type="button" id="loanCalc">Calculate Loan</button> -->
                         </div>
 
                     </fieldset>
