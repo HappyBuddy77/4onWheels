@@ -1,4 +1,4 @@
-package com._onWheels._onWheels;
+package com._onWheels._onWheels.users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

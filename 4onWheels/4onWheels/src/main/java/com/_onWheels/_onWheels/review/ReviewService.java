@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import com._onWheels._onWheels.Order;
 import com._onWheels._onWheels.OrderItem;
 import com._onWheels._onWheels.OrderRepository;
-import com._onWheels._onWheels.User;
-import com._onWheels._onWheels.UserRepository;
 import com._onWheels._onWheels.Vehicle;
 import com._onWheels._onWheels.VehicleRepository;
+import com._onWheels._onWheels.users.User;
+import com._onWheels._onWheels.users.UserRepository;
 
 @Service
 public class ReviewService {

@@ -1,4 +1,4 @@
-package com._onWheels._onWheels;
+package com._onWheels._onWheels.users;
 
 import java.util.Collection;
 

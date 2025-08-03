@@ -1,12 +1,12 @@
 @charset "UTF-8";
 /* EV Details */
-form {
+.vehicle-form {
 	padding: 20px;
 	width:650px;
     margin: 0;
 }
 /* Adding Space for the details */
-form label {
+.vehicle-form label {
     display: block;       
     margin-bottom: 15px;  
 }

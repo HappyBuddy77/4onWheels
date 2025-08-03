@@ -70,4 +70,8 @@ public class OrderItem {
     public double getTotalPrice() {
         return price * quantity;
     }
+
+    public double getQuantity(){
+        return this.quantity;
+    }
 }

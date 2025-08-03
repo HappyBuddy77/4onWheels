@@ -1,0 +1,15 @@
+.review-form-container{
+    display: block;
+    width: 100%
+}
+
+.review-form-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+.review-form-container textarea{
+    width: 100%;
+}

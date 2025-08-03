@@ -1,9 +1,16 @@
 @charset "UTF-8";
-form {
+/* form {
 	margin: 20px auto 0 auto;
 	padding: 20px;
 	width:1400px;
+} */
+
+.homepage-form {
+	margin: 20px auto 0 auto;
+	padding: 20px;
+	width:1400px;	
 }
+
 .container {
     display: flex;
     align-items: flex-start;
