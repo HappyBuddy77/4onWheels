@@ -40,5 +40,5 @@ document.addEventListener('DOMContentLoaded', function() {
         else {
             alert("The current stock of this item is 0, Please try again later");
         }
-    });
+    }); 
 });

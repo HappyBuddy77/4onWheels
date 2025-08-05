@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			alert("Please Enter your Phone Number in Payment Details");
 			return;
 		}
-        if (!isNaN(phone)) {
+        if (isNaN(phone)) {
 			alert("Please Enter a valid Phone Number in Payment Details / A valid Phone Number is numeric");
 			return;
 		}
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			alert("Please Enter your Credit Number in Payment Details");
 			return;
 		}
-        if (!isNaN(creditCard)) {
+        if (isNaN(creditCard)) {
 			alert("Please Enter a valid Credit Number in Payment Details / A valid Credit Number is numeric");
 			return;
 		}
@@ -138,7 +138,7 @@ function deleteItem(event, cartItemId) {
                 row.remove();
                 setTimeout(() => {
                     updateCartTotal();
-                }, 100); // for now keep at 100 milliseconds
+                }, 300); // for now keep at 300 milliseconds
             }
         })
         .catch(error => {
