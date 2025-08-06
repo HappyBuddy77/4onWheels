@@ -81,7 +81,7 @@ public class CartController {
 	}
 
 	@PostMapping("/usedVehicle/add")
-	public String addToCart_usedVehicle(@RequestParam String productId, @RequestParam String quantity, 
+	public String addToCart_usedVehicle(@RequestParam String productId, @RequestParam int quantity, 
 										@RequestParam String color_hidden, @RequestParam String battery_capacity_hidden, 
 										@RequestParam String range_hidden, @RequestParam String charging_time_hidden, 
 										@RequestParam String top_speed_hidden, @RequestParam String acceleration_hidden, 
@@ -100,11 +100,10 @@ public class CartController {
 
 		if(vehicleOpt.isPresent()) {
 			vehicle = vehicleOpt.get();
-			qty = Integer.parseInt(quantity);
-			if(vehicle.getQty() >= qty) {
-				cartService.addItemToCart(user.getId(), productId, qty, color_hidden, battery_capacity_hidden, range_hidden, charging_time_hidden, top_speed_hidden, acceleration_hidden);
+			if(vehicle.getQty() >= quantity) {
+				cartService.addItemToCart(user.getId(), productId, quantity, color_hidden, battery_capacity_hidden, range_hidden, charging_time_hidden, top_speed_hidden, acceleration_hidden);
 
-				vehicle.setQty(vehicle.getQty() - qty);
+				vehicle.setQty(vehicle.getQty() - quantity);
 				vehicleRepository.save(vehicle);
  			}
 			else {
