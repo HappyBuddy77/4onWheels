@@ -1,0 +1,27 @@
+<header th:fragment="header">
+
+    <div class="header-left">
+        <a href="/HomePage">
+            <h1>4onWheels Home</h1>
+        </a>
+    </div>
+    
+    <div class="header-right">
+        <div class="header-icons">
+            <a href="/chat/chat-ui" title="AI Chat"> 
+                <img src="https://freesvg.org/img/1538298822.png" class="icon">
+            </a>
+
+            <a href="/cart" title="Shopping Cart"> 
+                <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
+            </a>
+
+            <a href="/profile" title="Profile"> 
+                <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
+            </a>
+            
+        <div th:replace="~{logoutbtn :: logoutbtn}"> </div>
+        </div>
+    </div>
+    
+</header>

@@ -40,7 +40,13 @@ spring.datasource.username=<Your Username>
 spring.datasource.password=<Your Password>
 ```
 
-3. Run
+3. Configure .env to add the GEMINI_API_KEY
+```
+GEMINI_API_KEY=
+```
+![alt text](image.png)
+
+4. Run
 
 ```
 ./mvnw spring-boot:run

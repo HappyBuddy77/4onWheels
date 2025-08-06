@@ -1,9 +1,10 @@
-package com._onWheels._onWheels;
+package com._onWheels._onWheels.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 
 @Service
@@ -68,5 +69,5 @@ public class UserService {
 	public boolean emailExists(String email) {
 		return userRepository.existsByEmail(email.toLowerCase());
 	}
-
+	
 }

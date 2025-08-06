@@ -1,4 +1,4 @@
-package com._onWheels._onWheels;
+package com._onWheels._onWheels.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,9 +7,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class RegisterController {
+public class AuthController {
     @Autowired
     private UserService userService;
+
+    @GetMapping("/login")
+    public String login() {
+        return "login"; // renders login.html from /templates
+    }
 
     @GetMapping("/register")
     public String register() {

@@ -1,0 +1,24 @@
+.profile-contianer{
+    display: felx;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+    max-width: 1400px;
+    top: 70px;
+    z-index: 1;
+    margin: 0 auto 20px auto
+}
+
+.profile-contianer h1 {
+    margin-bottom: 1rem
+}
+
+.profile-field {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.profile-field p {
+    text-align: right;
+}

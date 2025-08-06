@@ -4,7 +4,7 @@
 	<head>
 		<title>New Vehicle</title>
         <link rel="stylesheet" th:href="@{/css/style.css}" />
-		<link rel="stylesheet" th:href="@{/css/cartCheckoutStyle.css}" />
+		<link rel="stylesheet" th:href="@{/css/user/cartCheckoutStyle.css}" />
 		<!-- <script src="homeInputs.js"></script> -->
 		
         <script type="text/javascript" th:src="@{/js/cartInputs.js}"></script>
@@ -12,22 +12,7 @@
         <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 	</head>
 	<body>
-		<header>
-            <a href="/">
-			    <h1>4onWheels Home</h1>
-            </a>
-
-            <div class="header-icons">
-                
-                <!-- Commented Out for now but this is to link the icon to the Shoping Cart, put above line between <a>...</a> -->
-                <a href="/cart" title="Shopping Cart"> 
-                    <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" class="icon">
-                </a>
-
-                <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/account-profile-user-icon--icon-search-engine-10.png" class="icon">
-                <!-- Add more icons as needed -->
-            </div>
-		</header>
+        <header th:replace="~{header :: header}"></header>
 		<main>
 
             <div class="checkout_title">
@@ -148,8 +133,8 @@
                             <label for="paymentOption">
                                 Payment Option: 
                                 <select id="paymentType" name="paymentType">
-                                    <option value="Loan">Loan</option>
                                     <option value="Full">Full</option>
+                                    <option value="Loan">Loan</option>
                                 </select>									
                             </label>
 
@@ -212,8 +197,6 @@
             <button class="next-button" id="btn_checkout">Next ➔</button>
 
 		</main>
-		<footer>
-			<p>Something</p>
-		</footer>
+	
 		</body>
 </html>

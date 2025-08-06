@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.server.ResponseStatusException;
 
+import com._onWheels._onWheels.users.User;
+import com._onWheels._onWheels.users.UserRepository;
+
 
 @Controller
 public class OrderController {

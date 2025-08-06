@@ -2,19 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Review</title>
+  <title>Review</title>
+  <th:block th:fragment="review-form-header">
+ 		<link rel="stylesheet" th:href="@{/css/review-form.css}" /> 
+  </ht:block>
 </head>
 <body>
-    <div th:fragment="review-form">
+    <div th:fragment="review-form" class="review-form-container">
         <h1>Add Review Form</h1>
         <form th:action="@{/review/{vehicle_id}(vehicle_id=${vehicles.id})}" th:object="${ReviewDTO}" method="post">
-          <label for="review">Review</label>
-          <textarea type="text" id="review" name="review" rows="10" placeholder="Enter your review" required > </textarea>
-    
           <label for="rating">Rating</label>
           <input type="number" max="5" id="rating" name="rating" placeholder="Enter you raitng 0-5" required />
+
+          <label for="review">Review</label>
+          <textarea type="text" id="review" name="review" rows="10" placeholder="Enter your review" required > </textarea>
+        
           <input  hidden type="text" id="redirect" name="redirect" th:value="${redirectPath}" />
-    
           <button type="submit">Submit Review</button>
         </form>
       </div>
