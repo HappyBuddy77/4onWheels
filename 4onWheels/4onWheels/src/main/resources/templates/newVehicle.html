@@ -4,7 +4,7 @@
 	<head>
 		<title>New Vehicle</title>
         <link rel="stylesheet" th:href="@{/css/style.css}" />
-		<link rel="stylesheet" th:href="@{/css/newVehicleStyle.css}" />
+		<link rel="stylesheet" th:href="@{/css/user/newVehicleStyle.css}" />
 		<!-- <script src="homeInputs.js"></script> -->
 		<script type="text/javascript" th:src="@{/js/vehicle.js}"></script>
 
@@ -128,7 +128,7 @@
                             </label>
                         
                             <input type="hidden" name="productId" th:value="${vehicles.id}"/>
-                            <input type="hidden" name="quantity" id="qty_hidden" th:value="${vehicles.qty}" />
+                            <input type="hidden" name="quantity" id="qty_hidden" value = 1 />
                             <input type="hidden" name="color_hidden" id="color_hidden" value=""/>
                             <input type="hidden" name="battery_capacity_hidden" id="battery_capacity_hidden" value=""/>
                             <input type="hidden" name="range_hidden" id="range_hidden" value=""/>
