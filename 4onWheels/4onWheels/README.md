@@ -1,5 +1,8 @@
 # 4OnWheels
 
+# Deployed on AWS
+[here](https://i9pu6wrfx5.us-east-1.awsapprunner.com/login)
+
 # How to run
 
 Make sure you have Docker or Docker desktop installed
@@ -42,9 +45,9 @@ spring.datasource.password=<Your Password>
 
 3. Configure .env to add the GEMINI_API_KEY
 ```
+# 4onwheels/4onwheels/.env
 GEMINI_API_KEY=
 ```
-![alt text](image.png)
 
 4. Run
 

@@ -1,6 +1,11 @@
 # 4onWheels
 EECS-4413 Project
 
+# Deployed on AWS
+[here](https://i9pu6wrfx5.us-east-1.awsapprunner.com/login)
+
+NOTE: Setup readme inside of `4onwheels/4onWheels`
+
 ### Requirements
 - Docker Engine v20+
 - Docker Compose (if not bundled)
