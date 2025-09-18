@@ -1,5 +1,5 @@
 # 4onWheels
-EECS-4413 Project
+Fullstack E-commerce implemented using Springboot for EECS-4413 Project
 
 # Deployed on AWS
 [here](https://i9pu6wrfx5.us-east-1.awsapprunner.com/login)
